@@ -9,7 +9,7 @@ class Public::AddressesController < ApplicationController
   def edit
   end
 
-  def updat
+  def update
   end
 
   def destroy
