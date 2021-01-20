@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  root to 'home#top'
+  get 'homes/about' => 'homes#about'
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
   devise_for :customers
   namespace :public do
+    
     root to: 'homes#top'
     get 'homes/about' => 'homes#about'
 
@@ -14,7 +17,7 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy,]
-    delete 'cart_items' => 'cart_items#empty_cart', as: 'public_cart_items_empty'
+    delete 'cart_items' => 'cart_items#empty_cart', as: 'cart_items_empty'
 
     resources :orders, only: [:new, :create, :index, :show]
     get 'orders/confirm' => 'orders#confirm'
