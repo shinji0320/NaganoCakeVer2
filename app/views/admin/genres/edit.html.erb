@@ -1,2 +1,12 @@
 <h1>Admin::Genres#edit</h1>
 <p>Find me in app/views/admin/genres/edit.html.erb</p>
+<h2>ジャンル編集</h2>
+<%= form_with %>
+  <div class="form-group">
+    <%= f.label :"商品名" %>
+    <%= f.text_field %>
+  </div>
+  <div>
+    <%= f.submit "変更保存" %>
+  </div>
+<% end %>
