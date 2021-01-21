@@ -10,9 +10,9 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to 
+      redirect_to admin_item_path(@item)
     else
-      render :
+      render :new
     end
   end
 
@@ -27,9 +27,9 @@ class Admin::ItemsController < ApplicationController
   def update
     if @item.update(item_params)
       flash[:success] = "商品内容をを変更しました"
-      redirect_to 
+      redirect_to admin_item_path(@item)
     else
-      render :
+      render :edit
     end
   end
   
