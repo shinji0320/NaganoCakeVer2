@@ -18,7 +18,7 @@
         <tr>
           <td>item.id</td>
           <td>
-            <%= link_to do %>
+            <%= link_to admin_item_path(item) do %>
               <%= item.name %>
             <% end %>
           </td>
@@ -40,4 +40,4 @@
     </tbody>
   </table>
 </div>
-<div><%= paginate @items %></div>
+<div><%#= paginate @items %></div>
