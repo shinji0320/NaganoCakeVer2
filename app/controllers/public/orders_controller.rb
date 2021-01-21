@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+ before_action :authenticate_customer!
 
   def new
      @orders = Order.all
@@ -6,9 +7,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @orders = Order.all
   end
 
   def create
+    @order = Order.new(order_params)
+    # @order.user_id = current_user.id
+    # if @book.save
+    #   redirect_to orders_path(@order)
   end
 
   def complete
@@ -19,8 +25,21 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def show
-    @orders = Order.all
+
+  def update
+    @order = Order.find(params[:id])
+    # if @order.update(order_params)
+    #   redirect_to order_path(@order)
   end
 
+
+  def show
+    @orders = Order.all
+    # @小計 = purchased_price*count
+    # @商品の合計 = @小計 + 他の商品の小計
+  end
+
+  # def order_params
+  #     params.require(:order).permit(:status)
+  # end
 end
