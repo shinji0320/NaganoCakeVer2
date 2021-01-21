@@ -1,0 +1,41 @@
+<%# TODO:20210121カート内商品一覧の画像のサイズ：とりあえず縦30*横50 %>
+<%# TODO: ボタンのリンク先をUI Flowに合わせる%>
+
+<table>
+  <tr>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th></th>
+  </tr>
+  <% total_price = 0 %>
+  <% decimal tax = 1.1 %>
+  <% cart_items.each do |cart_item| %>
+  <%= form_with model:cart_item, local:true do |f| %>
+  <% item = items(cart_item_item_id) %>
+
+  <tr>
+    <td>
+      <%= link_to item_path(cart_item_item_id)%>
+      <%= attachment_image_tag(item, :image_id, :fill, 30, 50, fallback: "no-image-icon.jpg") %>
+      <p class="cart-item-name">item.name</p>
+      <% end %>
+    </td>
+    <td>
+      <%= render "../../items/partial/expression_of_price_with_tax", item_price: item.name %>
+    </td>
+    <td>
+      <%= f.number_field :count, id: "item-count", min:1, max: 1000,placeholder: "0" %>
+      <%= f.submit "変更"%>
+    </td>
+    <td>
+      <%= render "../../items/partial/expression_of_price_with_tax", item_price: item.price * cart_item.count %>
+    </td>
+    <td>
+      <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger", id: "delete_cart_item_#{cart_item.id}"%>
+    </td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>

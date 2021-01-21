@@ -1,0 +1,27 @@
+<%# TODO:@cart_item：現在のカートの中身を取得する %>
+
+<%# <div class="container"> %>
+<%# <div class="row"> %>
+<%# <div class="column"> %>
+<div id="page-name">ショッピングカート</div>
+<%# </div> %>
+<%# <div class="column"> %>
+<%= link_to "カートを空にする", cart_item_path(@cart_items), method: :delete, class: "btn btn-sm btn-danger", id: "empty-cart"%>
+<%# </div> %>
+<%# </div> %>
+<%# <div class="row"> %>
+<%= render "partial/index" cart_items:@cart_items %>
+<%# </div> %>
+<%# <div class="row"> %>
+<%# <div class="column"> %>
+<%# TODO:20210121買い物を続ける %>
+<%# </div> %>
+<%# <div class="column"> %>
+<%# TODO:20210121合計金額用テーブル %>
+<%# </div> %>
+<%# </div> %>
+<%# </div> %>
+
+<div>
+  <%# TODO:20210121「情報入力に進む」ボタン %>
+</div>
