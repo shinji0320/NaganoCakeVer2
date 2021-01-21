@@ -1,5 +1,3 @@
-<%# TODO:20210120配達先登録のフォームにテーブルが使えるか %>
-
 <%= form_with model:address, local:true do |f| %>
 <div class="form-group">
   <%= f.label :postal_code "郵便番号(ハイフンなし)" %>
@@ -12,6 +10,6 @@
 <div class="form-group">
   <%= f.label :name "宛名" %>
   <%= f.text_field :name, class: "form_control name" %>
-  <%= f.submit button_text, class: 'btn btn-success' %>
+  <%= f.submit submit_text, class: 'btn btn-success' %>
 </div>
 <% end %>
