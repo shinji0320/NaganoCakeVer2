@@ -22,7 +22,8 @@
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
       <% elsif admin_signed_in? %>
-      <div class="row list-unstyled">
+        <li>LOGO</li>
+        <div class="row list-unstyled d-flex justify-content-end">
         <li>
           <%= link_to "商品一覧", admin_items_path, class: "m-3 btn btn-sm btn-success" %>
         </li>
