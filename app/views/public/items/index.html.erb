@@ -1,0 +1,8 @@
+<%# <div class="container"> %>
+<%# <div class="row"> %>
+<%= render 'partial/index_for_end_of_user', page_name:"商品一覧" , objects:@items %>
+<%# </div> %>
+<%# <div class="row"> %>
+<%# </div> %>
+<%= paginate @items %>
+<%# </div> %>
