@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to 'home#top'
+  root to: 'homes#top'
   get 'homes/about' => 'homes#about'
 
   devise_for :admins, controllers: {
@@ -7,9 +7,6 @@ Rails.application.routes.draw do
   }
   devise_for :customers
   namespace :public do
-    
-    root to: 'homes#top'
-    get 'homes/about' => 'homes#about'
 
     resources :customers, only: [:show, :edit, :update]
     get 'customers/confirm' => 'customers#confirm'

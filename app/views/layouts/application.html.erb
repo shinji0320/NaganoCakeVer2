@@ -9,7 +9,9 @@
 
   <body>
     <header>
+      <%= link_to "ながのCAKE", root_path %>
       <% if customer_signed_in? %>
+        <p>ようこそ、<%= current_customer.first_name %>さん</p>
         <li>
           <%= link_to "マイページ", public_customer_path(current_customer.id) %>
         </li>
