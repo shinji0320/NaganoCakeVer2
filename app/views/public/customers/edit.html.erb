@@ -1,2 +1,47 @@
-<h1>会員情報編集</h1>
+<div class="container">
+  <div class="row">
+     <div class="mx-auto">
+      <h3>会員情報編集</h3>
+      <%= form_for @customer, url: public_customer_path, local:true do |f|%>
+      <div class="form-group">
+        <label>名前</label>
+        <%= f.label :first_name, "(姓)" %>
+        <%= f.text_field :first_name, autofocus: true, class:"form-control" %>
+        <%= f.label :last_name, "(名)" %>
+        <%= f.text_field :last_name, class:"form-control" %>
+      </div>
 
+      <div class="form-group">
+        <label>フリガナ</label>
+        <%= f.label :kana_first_name, "(セイ)" %>
+        <%= f.text_field :kana_first_name, class:"form-control" %>
+        <%= f.label :kana_last_name, "(メイ)" %>
+        <%= f.text_field :kana_last_name, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autocomplete: "email", class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+        <%= f.text_field :postal_code, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
+        <%= f.text_field :telephone_number, class:"form-control" %>
+      </div>
+      
+      <%= f.submit '編集内容を保存', class: "btn btn-sm btn-success" %>
+    <% end %>
+    <%= link_to "退会する", public_customers_confirm_path, class:"btn btn-sm btn-danger" %>
+    </div>
+  </div>
+</div>
