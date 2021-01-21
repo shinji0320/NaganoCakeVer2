@@ -6,11 +6,11 @@
 <div id="page-name">ショッピングカート</div>
 <%# </div> %>
 <%# <div class="column"> %>
-<%= link_to "カートを空にする", cart_item_path(@cart_items), method: :delete, class: "btn btn-sm btn-danger", id: "empty-cart"%>
+<%= link_to "カートを空にする", public_cart_items_empty_path(@cart_items), method: :delete, class: "btn btn-sm btn-danger", id: "empty-cart"%>
 <%# </div> %>
 <%# </div> %>
 <%# <div class="row"> %>
-<%= render "partial/index" cart_items:@cart_items %>
+<%= render "partial/index", cart_items:@cart_items %>
 <%# </div> %>
 <%# <div class="row"> %>
 <%# <div class="column"> %>
