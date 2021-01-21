@@ -13,6 +13,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def empty_cart
+    @cart_items = Cart_items.current_customer.id
   end
 
 end

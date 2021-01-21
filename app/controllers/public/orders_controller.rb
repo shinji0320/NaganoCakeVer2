@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
- before_action :authenticate_user!
- 
+ before_action :authenticate_customer!
+
   def new
      @orders = Order.all
      @customer = Customer.find(params[:id])
@@ -24,15 +24,15 @@ class Public::OrdersController < ApplicationController
     @orders = Order.all
     @order = Order.new
   end
-  
-  
+
+
   def update
     @order = Order.find(params[:id])
     # if @order.update(order_params)
     #   redirect_to order_path(@order)
   end
-  
-  
+
+
   def show
     @orders = Order.all
     # @小計 = purchased_price*count
