@@ -75,8 +75,32 @@ Item.create!(
             genre_id: "1",
             image_id: "nk_disneycake03_w590.jpg",
             name: "プーさんcake",
-            detail: "セブンイレブンで発売している",
+            detail: "セブンイレブンと共同開発しました",
             price: "400"
+            # is_sold:
+        },
+        {
+            genre_id: "1",
+            image_id: "img_c84825d1163b33f19f01b45b808e8a3982576.jpg",
+            name: "ドナルド,デイジーcake",
+            detail: "ディズニーコラボ商品です",
+            price: "800"
+            # is_sold:
+        },
+        {
+            genre_id: "1",
+            image_id: "スクリーンショット-2018-03-03-12.22.07のコピー.png",
+            name: "ミッキーパンケーキ",
+            detail: "ディズニーランドホテルの提供",
+            price: "400"
+            # is_sold:
+        },
+        {
+            genre_id: "1",
+            image_id: "shutterstock_image-73のコピー14-750x750.jpg",
+            name: "ウエディングケーキ'シンデレラ城'",
+            detail: "セブンイレブンで発売している",
+            price: "12000"
             # is_sold:
         }
     ]
