@@ -18,18 +18,17 @@
     <p>電話番号<%= @customer.phone_number %></p>
   </div>
   <div>
-    <p>メールアドレス<%= @customer.email%></p>
+    <p>メールアドレス<%= @customer.email %></p>
   </div>
   <div>
     <p>会員ステータス</p>
-    <% if %>
+    <% if @customer.is_valid == true %>
       有効
-    <% else %>
+    <% elsif @customer.is_valid == false %>
     　無効
-    <% end %
+    <% end %>
   </div>
-
   <div>
-    <%= link_to "編集する" %>
-    <%= link_to " 注文履歴一覧を見る" %>
+    <%= link_to "編集する",edit_admin_customer_path(@customer) %>
+    <%= link_to " 注文履歴一覧を見る", admin_order_path(@customer) %>
   </div>
