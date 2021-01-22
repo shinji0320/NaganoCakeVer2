@@ -11,7 +11,7 @@
     <tbody>
         <% @orders.each do |order| %>
             <tr>
-              <td <%= attachment_image_id(item, :image_id, :fill, 50, 50, fallback: "no_image.jpg") %>>
+              <td <%= attachment_image_id(item, :image_id, :fill, 50, 50, fallback: "no_image.jpg") %>>c
                   <%= order.name %></td>
               <td><%= order.purchased_price %></td>
               <td><%= order.count %></td>
