@@ -39,13 +39,13 @@
     </tr>
   </thead>
   <tbody>
-   <% @orders.ecah do |order| %>
+   <% @order.order_items.ecah do |order_item| %>
     <tr>
-      <td><%= order.item.name%></td>
-      <td><%= order.item.price%></td>
-      <td><%= order.item.detail%></td>
+      <td><%= order_item.item.name%></td>
+      <td><%= order_item.item.price%></td>
+      <td><%= order_item.item.detail%></td>
       <% tax = 1.1 %>
-      <% subtotal = order.item.price * tax * order.item.detail %>
+      <% subtotal = order_item.item.price * tax * order_item.item.detail %>
       <td><%= subtotal %></td>
       <td><%= order.making_status%></td>
       <td><%= link_to "更新", admin_order_order_item_path(@order, @order_item), class: "btn btn-sm btn-success" %></td>
