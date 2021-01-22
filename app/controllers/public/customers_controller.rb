@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
 before_action :authenticate_customer!
+
   def show
     @customer = Customer.find(params[:id])
   end
@@ -21,9 +22,13 @@ before_action :authenticate_customer!
   end
 
   def hide
-    @cusromer = Customer.find(params[:id])
-    @customer.is_deleted
+    @cusromer = Customer.find(current_customer.id)
+    @cusromer.update(is_deleted: false)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
+
 
   private
 
