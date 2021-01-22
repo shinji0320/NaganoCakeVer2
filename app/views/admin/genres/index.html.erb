@@ -1,5 +1,5 @@
 <h2>ジャンル一覧・編集</h2>
-<%= form_with %>
+<%= form_with model:@genre,local:true do |f| %>
   <div class="form-group">
     <%= f.label :"商品名" %>
     <%= f.text_field %>
@@ -9,22 +9,22 @@
   </div>
 <% end %>
 <table>
-<thead>
-  <tr>
-    <th>ジャンル</th>
-    <th></th>
-  </tr>
-</thead>
-<tbody>
-  <% @genres.each do |genre| %>
+  <thead>
     <tr>
-      <td>
-        <%= genre.name %>
-      </td>
-      <td>
-        <%= link_to "編集する" %>
-      </td>
+      <th>ジャンル</th>
+      <th></th>
     </tr>
-  <% end %>
-</tbody>
+  </thead>
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td>
+          <%= genre.name %>
+        </td>
+        <td>
+          <%= link_to "編集する", edit_admin_genre_path(genre) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

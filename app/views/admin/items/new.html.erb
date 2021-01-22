@@ -1,5 +1,5 @@
 <h2>商品新規登録</h2>
-<%= form_with %>
+<%= form_with model: @item, local:true do |f| %>
   <div>
     <%= f.label :"商品画像" %>
     <%= attachment_image_tag %>
@@ -22,7 +22,7 @@
   </div>
   <div class="form-group">
     <%= f.label :"販売ステータス" %>
-    販売中 or 販売停止中
+    <%= f.select :is_sale, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --" %>
   </div>
   <div>
     <%= f.submit "新規登録" %>

@@ -1,7 +1,7 @@
 <h2>ジャンル編集</h2>
-<%= form_with %>
+<%= form_with model:@genre,local:true do |f| %>
   <div class="form-group">
-    <%= f.label :"商品名" %>
+    <%= f.label :"ジャンル名" %>
     <%= f.text_field %>
   </div>
   <div>

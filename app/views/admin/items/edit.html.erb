@@ -1,5 +1,5 @@
 <h2>商品編集</h2>
-<%= form_with %>
+<%= form_with model:@item,local:true do |f| %>
   <div>
     <%= f.label :"商品画像" %>
     <%= attachment_image_tag %>
