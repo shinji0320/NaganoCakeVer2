@@ -8,13 +8,17 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @orders = Order.all
+    if @order.save
+      redirect_to public_orders_complete_path
+    end
   end
 
   def create
     @order = Order.new(order_params)
-    # @order.user_id = current_user.id
-    # if @book.save
-    #   redirect_to orders_path(@order)
+    @order.customer_id = current_customer.id
+    if @order.save
+      redirect_to public_orders_confirm_path
+    end
   end
 
   def complete
@@ -28,18 +32,20 @@ class Public::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    # if @order.update(order_params)
-    #   redirect_to order_path(@order)
+    if @order.update(order_params)
+      redirect_to public_orders_confirm_path
+    end
   end
 
 
   def show
+    @order = Order.find(params[:id])
     @orders = Order.all
-    # @小計 = purchased_price*count
-    # @商品の合計 = @小計 + 他の商品の小計
+    @subtotal = order_items.purchased_price * order_item.count
   end
 
-  # def order_params
-  #     params.require(:order).permit(:status)
-  # end
+private
+  def order_params
+      params.require(:order).permit(:status)
+  end
 end

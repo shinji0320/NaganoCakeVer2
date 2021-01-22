@@ -11,15 +11,17 @@
     <tbody>
         <% @orders.each do |order| %>
             <tr>
-              <td><%= order.name %></td>
+              <td <%= attachment_image_id(item, :image_id, :fill, 50, 50, fallback: "no_image.jpg") %>>
+                  <%= order.name %></td>
               <td><%= order.purchased_price %></td>
               <td><%= order.count %></td>
-              <td><%= order.小計 %></td>
+              <% tax = 1.1 %>
+              <% subtotal = order_item.item.price * tax * order_item.item.detail %>
+              <td><%= subtotal %></td>
             </tr>
         <% end %>
     </tbody>
 </tablle>
-
 <table>
     <thread>
         <tbody>
@@ -33,7 +35,10 @@
         </tbody>
     </thread>
 </table>
-<h3>支払い方法</h3>
+<div class ="payment_method">支払い方法</div>
+    <%= order.payment_method %>
+<div class ="payment_method">お届け先</div>
+    <%= order.adress %>
     
     
-<%=f.submit "注文を確定する", class:"btn btn-success" %>
+<%=f.submit "注文を確定する", public_orders_complete, class:"btn btn-success" %>
