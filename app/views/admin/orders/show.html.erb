@@ -39,7 +39,7 @@
     </tr>
   </thead>
   <tbody>
-   <% @orders.ecah do |order| %>
+   <% @order.order_items.ecah do |order| %>
     <tr>
       <td><%= order.item.name%></td>
       <td><%= order.item.price%></td>

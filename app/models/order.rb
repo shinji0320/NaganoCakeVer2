@@ -3,4 +3,5 @@ class Order < ApplicationRecord
               :name, :shipping_cost, :total_price, presence: true
     belongs_to :customer
     has_many :order_items
+    Order.all.sum(:subtotal)
 end
