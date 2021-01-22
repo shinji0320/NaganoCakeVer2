@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
+gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.3.6"
 # Use Puma as the app server
@@ -61,3 +61,4 @@ gem "refile-mini_magick"
 gem 'kaminari'
 gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass', '~> 5.13'
+gem 'bootsnap', require: false
