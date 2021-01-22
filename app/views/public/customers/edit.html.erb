@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-8">
       <h3>会員情報編集</h3>
+      <%= render 'layouts/error', element: @customer %>
       <%= form_for @customer, url: public_customer_path, local:true do |f|%>
       <div class="form-group">
         <label>名前</label></br>
@@ -41,7 +42,7 @@
 
         <%= f.submit '編集内容を保存', class: "btn btn-sm btn-success" %>
       <% end %>
-      <%= link_to "退会する", public_customer_confirm_path, class:"btn btn-sm btn-danger" %>
+      <%= link_to "退会する", confirm_public_customer_path(@customer.id), class:"btn btn-sm btn-danger" %>
     </div>
   </div>
 </div>

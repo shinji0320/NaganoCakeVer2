@@ -24,7 +24,7 @@ before_action :authenticate_customer!
 
   def hide
     @cusromer = Customer.find(current_customer.id)
-    @cusromer.update(is_deleted: false)
+    @cusromer.update(is_deleted: true)
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path

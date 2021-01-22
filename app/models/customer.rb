@@ -9,4 +9,8 @@ class Customer < ApplicationRecord
   validates :is_deleted, inclusion:{in: [true, false]}
   has_many :orders
 
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
 end
