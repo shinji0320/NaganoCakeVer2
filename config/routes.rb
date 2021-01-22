@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   namespace :public do
 
     resources :customers, only: [:show, :edit, :update]
-    get 'customers/confirm' => 'customers#confirm'
-    patch 'customers/hide' => 'customers#hide'
+    get 'customers/:id/confirm' => 'customers#confirm', as: 'customer_confirm'
+    patch 'customers/:id/hide' => 'customers#hide', as: 'customer_hide'
 
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy,]
