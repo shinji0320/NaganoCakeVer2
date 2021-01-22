@@ -76,7 +76,7 @@ Item.create!(
             image_id: "nk_disneycake03_w590.jpg",
             name: "プーさんcake",
             detail: "セブンイレブンと共同開発しました",
-            price: "400"
+            price: "500"
             # is_sold:
         },
         {
@@ -101,6 +101,30 @@ Item.create!(
             name: "ウエディングケーキ'シンデレラ城'",
             detail: "セブンイレブンで発売している",
             price: "12000"
+            # is_sold:
+        },
+        {
+            genre_id: "2",
+            image_id: "imgrc0131499160.jpg",
+            name: "Disney焼き菓子詰め合わせ",
+            detail: "オンランストアでも販売中",
+            price: "3000"
+            # is_sold:
+        },
+        {
+            genre_id: "3",
+            image_id: "e8fc6effbb56e7ff18586840767b9a34.jpg",
+            name: "フルーツキャンディ",
+            detail: "2020年売れ筋ナンバーワン",
+            price: "780"
+            # is_sold:
+        },
+        {
+            genre_id: "4",
+            image_id: "5dddf1c67ebad_1.jpg",
+            name: "魔法のランプ付きプリン",
+            detail: "一日20個限定",
+            price: "320"
             # is_sold:
         }
     ]
