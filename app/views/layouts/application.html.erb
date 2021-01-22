@@ -8,33 +8,57 @@
   </head>
 
   <body>
-     <% if customer_signed_in? %>
-     <li>
-        マイページ
-      </li>
-      <li>
-        商品一覧
-      </li>
-      <li>
-        カート
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        About
-      </li>
-      <li>
-        商品一覧
-      </li>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-    <%= yield %>
+    <header>
+      <%= link_to "ながのCAKE", root_path %>
+      <% if customer_signed_in? %>
+        <p>ようこそ、<%= current_customer.first_name %>さん</p>
+        <li>
+          <%= link_to "マイページ", public_customer_path(current_customer.id), class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        <li>
+          <%= link_to "商品一覧", public_items_path, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        <li>
+          <%= link_to "カート", public_cart_items_path, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+    <% elsif admin_signed_in? %>
+      <div class="row list-unstyled">
+        <li>
+          <%= link_to "商品一覧", admin_items_path, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        <li>
+          <%= link_to "会員一覧", admin_customers_path, class: "m-3 btn btn-sm btn-success " %>
+        </li>
+        <li>
+          <%= link_to "注文履歴一覧", admin_orders_path, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        <li>
+          <%= link_to "ジャンル一覧", admin_genres_path, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        </div>
+      <% else %>
+        <li>
+          <%= link_to "About", homes_about_path, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        <li>
+          <%= link_to "商品一覧", public_items_path, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        <li>
+          <%= link_to "新規登録", new_customer_registration_path, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_customer_session_path, class: "m-3 btn btn-sm btn-success" %>
+        </li>
+      <% end %>
+    </header>
+  <%= yield %>
+    <footer>
+    </footer>
   </body>
 </html>

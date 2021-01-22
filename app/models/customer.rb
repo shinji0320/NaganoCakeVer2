@@ -5,6 +5,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :first_name, :last_name, :kana_first_name, :kana_last_name, :postal_code,
-            :address, :telephone_number,  presence: true
+            :address, :telephone_number, presence: true
+  validates :is_deleted, inclusion:{in: [true, false]}
   has_many :orders
+
 end
