@@ -6,52 +6,52 @@
   <div class="field">
     <label>名前</label>
     <%= f.label :first_name, "(姓)" %>
-    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
     <%= f.label :last_name, "(名)" %>
-    <%= f.text_field :last_name, autofocus: true %>
+    <%= f.text_field :last_name, autofocus: true, class: 'form-control' %>
   </div>
 
   <div class="field">
     <label>フリガナ</label>
     <%= f.label :kana_first_name, "(セイ)" %>
-    <%= f.text_field :kana_first_name %>
+    <%= f.text_field :kana_first_name, class: 'form-control' %>
     <%= f.label :kana_last_name, "(メイ)" %>
-    <%= f.text_field :kana_last_name %>
+    <%= f.text_field :kana_last_name, class: 'form-control' %>
   </div>
 
 
   <div class="field">
     <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postal_code %>
+    <%= f.text_field :postal_code, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :address, "住所" %>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
-    <%= f.text_field :telephone_number %>
+    <%= f.text_field :telephone_number, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :password, "パスワード(6文字以上)" %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, "パスワード(確認用)" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "新規登録" %>
+    <%= f.submit "新規登録", class: "btn btn-sm btn-success" %>
   </div>
 <% end %>
 
