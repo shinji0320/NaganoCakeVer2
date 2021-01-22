@@ -9,7 +9,7 @@
   <p>商品説明<%= @item.explanation %></p>
 </div>
 <div>
-  <p>ジャンル<%= @item.@genre.name %></p>
+  <p>ジャンル<%= @item.genre.name %></p>
 </div>
 <div>
 	<p>
@@ -20,9 +20,9 @@
 <div>
   <p>
     販売ステータス
-    <% if @item.is_sale == true %>
+    <% if @item.is_sold == true %>
       <p>販売中</p>
-    <% elsif @item.is_sale == false %>
+    <% elsif @item.is_sold == false %>
       <p>販売停止中</p>
     <% end %>
   </p>

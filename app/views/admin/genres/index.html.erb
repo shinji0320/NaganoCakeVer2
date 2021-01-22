@@ -1,8 +1,8 @@
 <h2>ジャンル一覧・編集</h2>
-<%= form_with model:@genre,local:true do |f| %>
+<%= form_with url: admin_genres_path,local:true do |f| %>
   <div class="form-group">
     <%= f.label :"商品名" %>
-    <%= f.text_field %>
+    <%= f.text_field :name %>
   </div>
   <div>
     <%= f.submit "新規登録" %>

@@ -27,15 +27,15 @@
               <% end %>
             </td>
             <td>
-              ¥<%= item.price(税抜き価格)%>
+              ¥<%= item.price.to_s(:delimited) %>
             </td>
             <td>
-              <%= item.genre.name %>
+              <%= item.name %>
             </td>
             <td>
-              <% if item.is_sale == true %>
+              <% if item.is_sold == true %>
                 <p>販売中</p>
-              <% elsif item.is_sale == false %>
+              <% elsif item.is_sold == false %>
                 <p>販売停止中</p>
               <% end %>
             </td>
