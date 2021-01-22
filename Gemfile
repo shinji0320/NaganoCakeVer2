@@ -61,3 +61,7 @@ gem "refile-mini_magick"
 gem 'kaminari'
 gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass', '~> 5.13'
+<<<<<<< HEAD
+=======
+gem 'bootsnap', require: false
+>>>>>>> develop

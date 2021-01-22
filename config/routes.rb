@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   devise_for :installs
+=======
+
+>>>>>>> develop
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
 

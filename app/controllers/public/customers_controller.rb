@@ -1,16 +1,18 @@
 class Public::CustomersController < ApplicationController
 before_action :authenticate_customer!
+
   def show
-    @customer = Customer.find(current_customer)
+    @customer = Customer.find(params[:id])
   end
 
   def edit
-    @cusromer = Customer.find(current_customer)
+    @customer = Customer.find(params[:id])
   end
 
   def update
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to public_customer_path(@customer.id)
+      redirect_to public_customer_path(@customer.id), notice: '会員情報を編集しました'
     else
       render "edit"
     end
@@ -20,14 +22,18 @@ before_action :authenticate_customer!
   end
 
   def hide
-    @cusromer = Customer.find(params[:id])
-    @customer.is_deleted
+    @cusromer = Customer.find(current_customer.id)
+    @cusromer.update(is_deleted: false)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
+
 
   private
 
   def customer_params
-    params.require(:cusromer).permit(:first_name, :last_name, :kana_first_name, :kana_last_name,
+    params.require(:customer).permit(:first_name, :last_name, :kana_first_name, :kana_last_name,
       :postal_code, :address, :telephone_number, :is_deleted)
   end
 
