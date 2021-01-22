@@ -19,6 +19,7 @@ before_action :authenticate_customer!
   end
 
   def confirm
+    @customer = Customer.find(params[:id])
   end
 
   def hide
