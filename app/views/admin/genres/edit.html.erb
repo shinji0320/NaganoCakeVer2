@@ -1,8 +1,8 @@
 <h2>ジャンル編集</h2>
-<%= form_with %>
+<%= form_with url: admin_genres_path,local:true do |f| %>
   <div class="form-group">
-    <%= f.label :"商品名" %>
-    <%= f.text_field %>
+    <%= f.label :"ジャンル名" %>
+    <%= f.text_area :detail %>
   </div>
   <div>
     <%= f.submit "変更保存" %>

@@ -1,8 +1,8 @@
 <h2><%= full_name(@customer) %>さんの会員情報編集</h2>
-<%= form_with %>
+<%= form_with model:@customer,local:true do |f| %>
   <div>
     <%= f.label :"会員ID" %>
-    <%= f.label %>
+    <%= f.label :"@customer.id"%>
   </div>
   <div class="form-group">
     <%= f.label :"氏名" %>
@@ -32,10 +32,10 @@
   </div>
   <div class="form-group">
     <%= f.label :"会員ステータス" %>
-    　<%= f.radio_button %>
-    　<%= f.label :is_valid, "退会済" %>
-    　<%= f.radio_button %>
-    　<%= f.label :is_valid, "有効" %>
+    <%= f.radio_button :is_valid, true %>
+    <%= f.label :is_valid, "退会済" %>
+    <%= f.radio_button :is_valid, false %>
+    <%= f.label :is_valid, "有効" %>
   </div>
   <div>
     <%= f.submit '変更を保存する' %>
