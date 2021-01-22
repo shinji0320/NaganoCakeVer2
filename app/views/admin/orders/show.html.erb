@@ -39,13 +39,54 @@
     </tr>
   </thead>
   <tbody>
-   <% @order.order_items.ecah do |order| %>
+<h2>注文履歴詳細</h2>
+
+<table>
+  <tbody>
     <tr>
-      <td><%= order.item.name%></td>
-      <td><%= order.item.price%></td>
-      <td><%= order.item.detail%></td>
+      <th>購入者</th>
+      <td><%= order.customer.name %></td>
+    </tr>
+    <tr>
+      <th>注文日</th>
+      <td><%= order.created_at %></td>
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <td><%= order.address %></td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td><%= order.payment_method %></td>
+    </tr>
+    <tr>
+      <th>注文ステータス</th>
+      <td><%= order.status %></td>
+      <%= link_to "更新", admin_order_path(@order), class: "btn btn-sm btn-success"  %>
+    </tr>
+  </tbody>
+</table>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<<<<<<< HEAD======   <% @order.order_items.ecah do |order_item| %>
+    <tr>
+      <td><%= order_item.item.name%></td>
+      <td><%= order_item.item.price%></td>
+      <td><%= order_item.item.detail%></td>
       <% tax = 1.1 %>
-      <% subtotal = order.item.price * tax * order.item.detail %>
+      <% subtotal = order_item.item.price * tax * order_item.item.detail %>
       <td><%= subtotal %></td>
       <td><%= order.making_status%></td>
       <td><%= link_to "更新", admin_order_order_item_path(@order, @order_item), class: "btn btn-sm btn-success" %></td>
