@@ -1,5 +1,5 @@
 <h2>会員一覧</h2>
-<table>
+<table class="table table-hover table-bordered">
   <thead>
     <tr>
       <th>会員ID</th>
@@ -15,21 +15,22 @@
           <%= customer.id %>
         </td>
         <td>
-          <%= link_to %>
-            <%= customer.name %>
+          <%= link_to admin_customer_path(customer) do %>
+            <%= customer.first_name %><%= customer.last_name %>
           <% end %>
         </td>
         <td>
           <%= customer.email %>
         </td>
         <td>
-          <% if %>
-            <p>有効</p>
-          <% else %>
+          <% if customer.is_deleted == true %>
             <p>退会</p>
+          <% else %>
+            <p>有効</p>
           <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<div><%#= paginate @customers %></div>
