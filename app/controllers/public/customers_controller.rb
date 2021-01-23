@@ -12,20 +12,22 @@ before_action :authenticate_customer!
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to public_customer_path(@customer.id), notice: '会員情報を編集しました'
+       flash[:notice] = "登録情報が編集されました"
+      redirect_to public_customer_path(@customer.id)
     else
       render "edit"
     end
   end
 
   def confirm
+    @customer = Customer.find(params[:id])
   end
 
   def hide
     @cusromer = Customer.find(current_customer.id)
-    @cusromer.update(is_deleted: false)
+    @cusromer.update(is_deleted: true)
     reset_session
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    flash[:notice] = "退会しました。今までのご利用ありがとうございました。"
     redirect_to root_path
   end
 
