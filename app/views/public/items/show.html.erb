@@ -1,24 +1,8 @@
-<<<<<<< HEAD
-<%# TODO:20210120注文できる個数の最小・最大値をチームで設定する（とりあえず現在1と1000） %>
-<%# TODO:202101222ジャンル検索リンクがワイヤーフレーム（エンドユーザ側P6）上に見当たらないが、エンドユーザ側UI Flowsに記されているので勝手に作成したので、チームで共有する（ジャンル名を表示し、それがリンクになっている） %>
-
 <%# <div class="container"> %>
 <%# <div class="row"> %>
 <%# <div class="column"> %>
-<%= image_tag(@item.image_id, alt: "Item Image", id: "item-image") %>
-<%# </div> %>
-<%# <div class="column"> %>
-<h3 class="item-name">@item.name</h3>
-<p class="item-detail">@item.detail</p>
-<div class="form-group">
-  <p class="item-price"><span>￥<%= price_with_tax(item.price).to_s(:delimited, delimiter: ',') %></span>（税込み）</p>
-</div>
-<%= form_with model:@cart_item, url: public_cart_items_path() local:true do |f| %>
-  <%= f.number_field :count, id: "item-count", min:1, max: 50, placeholder: "個数選択"%>
-  <%= f.submit "カートに入れる"%>
-=======
 <div>
-  <%#= attachment_image_tag(@item, :image, size: "100x100", fallback: "no_image.jpg" ) %>
+  <%= attachment_image_tag(@item, :image, size: "100x100", fallback: "no_image.jpg" ) %>
 </div>
 <div>
   <h2><%= @item.name %></h2>
@@ -29,8 +13,7 @@
 <div>
   ¥<%= @item.price.to_s(:delimited) %><span>(税込)</span>
 </div>
-<%= form_with model:@cart_item , url: public_cart_items_path do |f| %>
-  <%= f.select :count, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-  <%= f.submit "カートに入れる", class: " btn btn-primary" %>
->>>>>>> origin/develop
-<% end %>
+<%#= form_with model:@cart_item , url: public_cart_items_path do |f| %>
+  <%#= f.select :count, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+  <%#= f.submit "カートに入れる", class: " btn btn-primary" %>
+<%# end %>
