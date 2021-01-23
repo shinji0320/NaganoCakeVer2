@@ -12,7 +12,7 @@ before_action :authenticate_customer!
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-       flash[:notice] = "登録情報が編集されました"
+       flash.now[:notice] = "登録情報が編集されました"
       redirect_to public_customer_path(@customer.id)
     else
       render "edit"
