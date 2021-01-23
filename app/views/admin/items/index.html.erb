@@ -1,15 +1,15 @@
+<div class="container">
 <h2>商品一覧</h2>
-<div class = "">
-  <div class = "">
-    <div class = "text-right">
-      <%= link_to new_admin_item_path, class: "btn btn-warning" do %>
+ <div class="row">
+  <div class="col-12">
+      <%= link_to new_admin_item_path, class: "btn btn-warning float-right" do %>
         <i class="fas fa-plus"></i>
         新規登録
       <% end %>
     </div>
-    <table class="table table-hover table-bordered">
-      <thead>
-        <tr>
+    <table class="table">
+      <thead class="table-active">
+        <tr class="info">
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜価格</th>
@@ -20,7 +20,9 @@
       <tbody>
         <% @items.each do |item| %>
           <tr>
-            <td>item.id</td>
+            <td>
+              <%= item.id %>
+            </td>
             <td>
               <%= link_to admin_item_path(item) do %>
                 <%= item.name %>
@@ -43,6 +45,7 @@
         <% end %>
       </tbody>
     </table>
-    <div><%#= paginate @items %></div>
+  </div>
   </div>
 </div>
+<div class="mx-auto" style="width: 200px;"><%= paginate @items %></div>

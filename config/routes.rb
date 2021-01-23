@@ -16,8 +16,8 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :update, :destroy,]
+    resources :items
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items' => 'cart_items#empty_cart', as: 'cart_items_empty'
 
     resources :orders, only: [:new, :create, :index, :show]
