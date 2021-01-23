@@ -1,6 +1,6 @@
 <h2>商品編集</h2>
 <div class="mx-auto" style="width: 200px;">
-<%= form_with url: admin_item_path,local:true do |f| %>
+<%= form_with model:@item, url: admin_item_path(@item),local:true do |f| %>
   <div>
     <%= f.label :"商品画像" %>
     <%#= attachment_image_tag %>
