@@ -1,13 +1,13 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    @items = Item.where(is_sold: true).order("id desc")
-    # @items = Item.Where(is_sold: true).order("id desc").page(params[:page]).per(8)
+    @items = Item.where(is_sold: true).page(params[:page]).per(4)
   end
 
   def show
     @item = Item.find(params[:id])
-    @cart_item = Cart_item.new
+
+    @cart_item = CartItem.new
   end
 
 end
