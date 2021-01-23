@@ -8,12 +8,12 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-     cart_item = Cart_item.new(cart_item_params)
-      if cart_item.save
-        redirect_to cart_items_path(cart_item)
-      else
-        render "index"
-      end
+    cart_item = Cart_item.new(cart_item_params)
+    if cart_item.save
+      redirect_to cart_items_path(cart_item)
+    else
+      render "index"
+    end
   end
 
   def empty_cart

@@ -10,7 +10,7 @@ class Public::AddressesController < ApplicationController
       if @address.save
         redirect_to addresses_path
       else
-        flash[:notice] = "You have add new address successfully."
+        flash[:notice] = "You add new address successfully."
         render "index"
       end
   end
@@ -37,7 +37,7 @@ class Public::AddressesController < ApplicationController
   private
 
   def address_params
-      params.require(:address).permit(:posital_code, :address, :name)
+      params.require(:address).permit(:postal_code, :address, :name)
   end
 
 end
