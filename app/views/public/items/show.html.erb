@@ -7,15 +7,14 @@
 <%= image_tag(@item.image_id, alt: "Item Image", id: "item-image") %>
 <%# </div> %>
 <%# <div class="column"> %>
-<%= form_with model:@cart_item, local:true do |f| %>
-<h3 id="item-name">@item.name</h3>
-<p id="item-detail">@item.detail</p>
+<h3 class="item-name">@item.name</h3>
+<p class="item-detail">@item.detail</p>
 <div class="form-group">
-  <p id="item-price"><span>￥<%= price_with_tax(item.price).to_s(:delimited, delimiter: ',') %></span>（税込み）</p>
-  <%= link_to @item.genre_name, items_path("genre_id") %>
+  <p class="item-price"><span>￥<%= price_with_tax(item.price).to_s(:delimited, delimiter: ',') %></span>（税込み）</p>
 </div>
-<%= f.number_field :count, id: "item-count", min:1, max: 1000,placeholder: "個数選択"%>
-<%= f.submit "カートに入れる"%>
+<%= form_with model:@cart_item, url: public_cart_items_path() local:true do |f| %>
+  <%= f.number_field :count, id: "item-count", min:1, max: 50, placeholder: "個数選択"%>
+  <%= f.submit "カートに入れる"%>
 <% end %>
 <%# </div> %>
 <%# </div> %>
