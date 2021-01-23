@@ -24,7 +24,7 @@
           <tr>
             <td>注文ステータス</td>
             <td>
-              <%= form_with model: @order, url:'/admin/orders/:id', local:true do |f| %>
+              <%= form_with model: @order, url:admin_order_path(@order), local:true do |f| %>
                 <%= f.select :status, [['入金待ち'], ['入金確認'], ['制作中'], ['発送準備中'], ['発送済み']], prompt: "入金待ち" %>
                 <%= f.submit "更新", class: "btn btn-sm btn-success" %>
               <% end %>
@@ -56,7 +56,7 @@
             <% subtotal = order_item.item.price * tax * order_item.count %>
             <td><%= subtotal %></td>
           <%= form_with model:@order_itemsto_xml, local:true do |f| %>
-            <td><%= f.select :maikng_status, [['作成待ち'], ['制作中'], ['作成完了']], prompt: "着手不可" %></td>
+            <td><%= f.select :maikng_status, [['作成待ち'], ['制作中'], ['作成完了']]%></td>
             <td><%= f.submit "更新", class: "btn btn-sm btn-success" %></td>
           <% end %>
           </tr>
