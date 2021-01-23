@@ -1,8 +1,8 @@
  <div class='container px-1 px-sm-0'>
    <div class='row'>
-    <div class='col-md-3'>
-<h2>注文履歴詳細</h2>
-  <h3>注文情報</h3>
+    <div class='col-md-7'>
+<h3>注文履歴詳細</h3>
+  <h5>注文情報</h5>
     <table class='table order-information'>
       <tbody>
         <% @orders.each do |order| %>
@@ -22,11 +22,10 @@
       </tbody>
     </table>
 
-  <div class="mt-8">
+  <div class="mt-2">
   <h3>請求情報</h3>
     <table class='table billing-information'>
         <tbody>
-            <tr>
               <th>商品合計</th><td><%= @item_total %></td>
               <th>配送料</th><td><%= @order.shipping_cost %></td>
               <th>ご請求額</th><td><%= @order.total_price %></td>
@@ -35,7 +34,7 @@
     </table>
   </div>
 
-<div class='col-md-3 offset-md-1'>
+<div class='col-md-2 offset-md-1'>
   <h3>注文内容</h3>
     <table class='table order-details'>
         <thead>
