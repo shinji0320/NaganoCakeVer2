@@ -2,8 +2,8 @@
 <div class="mx-auto" style="width: 200px;">
 <%= form_with model:@item,url: admin_items_path,local:true do |f| %>
   <div>
-    <%#= f.label :"商品画像" %>
-    <%#= attachment_image_tag %>
+    <%= f.label :"商品画像" %>
+    <%= attachment_image_tag(@item, :image, size: "100x100", fallback: "no_image.jpg") %>
   </div>
 
   <div>
