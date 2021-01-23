@@ -7,13 +7,17 @@ Rails.application.routes.draw do
   }
   devise_for :customers
   namespace :public do
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+        get "confirm"
+        #ユーザーの会員状況を取得
+        patch "hide"
+        #ユーザーの会員状況を更新
+      end
+    end
 
-    resources :customers, only: [:show, :edit, :update]
-    get 'customers/:id/confirm' => 'customers#confirm', as: 'customer_confirm'
-    patch 'customers/:id/hide' => 'customers#hide', as: 'customer_hide'
-
-    resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :update, :destroy,]
+    resources :items
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items' => 'cart_items#empty_cart', as: 'cart_items_empty'
 
     resources :orders, only: [:new, :create, :index, :show]
