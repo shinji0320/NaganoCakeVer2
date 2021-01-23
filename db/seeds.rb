@@ -213,7 +213,7 @@ OrderItem.create!(
         {
             item_id: "1",
             order_id: "1",
-            count: "20",
+            count: "3",
             making_status: "制作待ち",
             purchased_price: "3700"
         },
