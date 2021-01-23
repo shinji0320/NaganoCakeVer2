@@ -13,16 +13,16 @@ class Public::CartItemsController < ApplicationController
       redirect_to contolloer: "public::items", action: "show"
     end
   end
-  
-  def update # カート内個数の変更
-    
+
+  # def update # カート内個数の変更
+
 
   def empty_cart
     @cart_items = Cart_item.current_customer.id
   end
 
   private
-  
+
     def set_ca_item
     @line_item = current_cart.line_items.find_by(product_id: params[:product_id])
     end
