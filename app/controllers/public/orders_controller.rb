@@ -41,7 +41,16 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @orders = Order.all
+<<<<<<< HEAD
     @subtotal = order_items.purchased_price * order_item.count
+=======
+    @order_item = @order.order_items
+    # 商品合計の計算方法
+    @item_total = 0
+    @order.order_items.each do |order_item|
+      @item_total += order_item.purchased_price * order_item.count
+    end
+>>>>>>> develop
   end
 
 private
