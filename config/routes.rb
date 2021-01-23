@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
+  root to: 'homes#top'
+  get 'homes/about' => 'homes#about'
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
   devise_for :customers
   namespace :public do
-    root to: 'homes#top'
-    get 'homes/about' => 'homes#about'
 
     resources :customers, only: [:show, :edit, :update]
-    get 'customers/confirm' => 'customers#confirm'
-    patch 'customers/hide' => 'customers#hide'
+    get 'customers/:id/confirm' => 'customers#confirm', as: 'customer_confirm'
+    patch 'customers/:id/hide' => 'customers#hide', as: 'customer_hide'
 
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy,]
-    delete 'cart_items' => 'cart_items#empty_cart', as: 'public_cart_items_empty'
+    delete 'cart_items' => 'cart_items#empty_cart', as: 'cart_items_empty'
 
     resources :orders, only: [:new, :create, :index, :show]
     get 'orders/confirm' => 'orders#confirm'
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update] do
-      resources :order_items, only: [:update]
+      resource :order_items, only: [:update]
     end
   end
 
