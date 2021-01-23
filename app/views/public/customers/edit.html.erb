@@ -3,6 +3,11 @@
     <div class="col-8">
       <h3>会員情報編集</h3>
       <%= render 'layouts/error', element: @customer %>
+      <% if flash[:notice] %>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
       <%= form_for @customer, url: public_customer_path, local:true do |f|%>
       <div class="form-group">
         <label>名前</label></br>
