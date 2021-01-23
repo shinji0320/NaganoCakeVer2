@@ -9,16 +9,6 @@ Admin.create!(
     email: 'admin@admin',
     password: 'testtest'
 )
-Address.create!(
-    [
-        {
-            customer_id: "1",
-            postal_code: "1",
-            address: "大阪府大阪市中央区難波4丁目7-14難波フロントビル４階",
-            name: "難波",
-        }
-    ]
-)
 Customer.create!(
     [
         {
@@ -78,7 +68,16 @@ Customer.create!(
         }
     ]
 )
-
+Address.create!(
+    [
+        {
+            customer_id: "1",
+            postal_code: "1",
+            address: "大阪府大阪市中央区難波4丁目7-14難波フロントビル４階",
+            name: "難波",
+        }
+    ]
+)
 Genre.create!(
     [
         {
@@ -99,7 +98,7 @@ Order.create!(
     [
         {
             payment_method: "0",
-            status: "0",
+            status: "入金確認",
             shipping_cost: "800",
             customer_id: "5",
             address: "千葉県浦安市舞浜１−１",
@@ -109,7 +108,7 @@ Order.create!(
         },
         {
             payment_method: "0",
-            status: "0",
+            status: "製作中",
             shipping_cost: "800",
             customer_id: "5",
             address: "千葉県浦安市舞浜１−１",
@@ -119,7 +118,7 @@ Order.create!(
         },
         {
             payment_method: "0",
-            status: "0",
+            status: "発送済み",
             shipping_cost: "800",
             customer_id: "5",
             address: "千葉県浦安市舞浜１−１",
@@ -129,7 +128,17 @@ Order.create!(
         },
         {
             payment_method: "0",
-            status: "0",
+            status: "製作中",
+            shipping_cost: "800",
+            customer_id: "1",
+            address: "大阪府大阪市中央区難波4丁目7-14難波フロントビル４階",
+            postal_code: "5240076",
+            name: "難波太郎",
+            total_price: "120"
+        },
+        {
+            payment_method: "0",
+            status: "発送済み",
             shipping_cost: "800",
             customer_id: "4",
             address: "東京都渋谷区神南１丁目１９−１１ パークウェースクエスクエア24階",
@@ -199,23 +208,37 @@ Item.create!(
         }
     ]
 )
-Cart_item.create!(
-    [
-        {
-            customer_id: "1",
-            item_id: "1",
-            count: "1"
-        }
-    ]
-)
-Order_item.create!(
+OrderItem.create!(
     [
         {
             item_id: "1",
             order_id: "1",
-            count: "1",
-            making_status: "1",
+            count: "20",
+            making_status: "制作待ち",
             purchased_price: "3700"
+        },
+        {
+            item_id: "2",
+            order_id: "2",
+            count: "200",
+            making_status: "制作完了",
+            purchased_price: "12000"
+        },
+        {
+            item_id: "3",
+            order_id: "3",
+            count: "24",
+            making_status: "制作待ち",
+            purchased_price: "1000"
+        }
+    ]
+)
+CartItem.create!(
+    [
+        {
+            customer_id: "3",
+            item_id: "3",
+            count: "23"
         }
     ]
 )
