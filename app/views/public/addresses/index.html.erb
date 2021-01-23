@@ -1,18 +1,51 @@
-<!--TODO:20210119コントローラーの@address：新規配送先送信用-->
-<!--TODO:20210119コントローラーの@addresses：配送先一覧用-->
 <%# TODO:20210120幾つかのページに共通してみられるページ説明用要素の共通化の有無 %>
 <!--TODO:20200119BootStrapのGrid-->
 
-<!--<div class='container'>-->
-
+<%# <div class='container'> %>
 <%# <div class='col-md-3'> %>
 <span id="page-name">配送先登録 / 一覧</span>
 <%# </div> %>
 <!--<div class="row">-->
-<%= render "partial/input", address: @address, submit_text: "新規登録" %>
+<%= form_with model:@address, local:true do |f| %>
+<div class="form-group">
+  <%= f.label :postal_code "郵便番号(ハイフンなし)" %>
+  <%= f.text_area :postal_code, class: "form_control postal_code" %>
+</div>
+<div class="form-group">
+  <%= f.label :address "住所" %>
+  <%= f.text_area :postal_code, class: "form_control address" %>
+</div>
+<div class="form-group">
+  <%= f.label :name "宛名" %>
+  <%= f.text_field :name, class: "form_control name" %>
+  <%= f.submit "新規登録", class: 'btn btn-success' %>
+</div>
+<% end %>
 <!--</div>-->
 <%# <div class="row"> %>
-<%= render "partial/index", addresses: @addresses %>
+<table>
+  <tr>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>宛名</th>
+    <th></th>
+  </tr>
+  <% @addresses.each do |address| %>
+  <tr>
+    <td>address.postal_code</td>
+    <td>address.address</td>
+    <td>address.name</td>
+    <td>
+      <div class="address-edit">
+        <%= link_to "編集", edit_address_path(address), class: "btn btn-sm btn-success edit_address_#{address.id}" %>
+      </div>
+      <div class="address-delete">
+        <%= link_to "削除", address_path(address), method: :delete %>
+      </div>
+    </td>
+  </tr>
+  <% end %>
+</table>
 <%# </div> %>
 
 <!--</div>-->

@@ -1,6 +1,22 @@
+<%# TODO:20210120画像サイズをチームで決定する（一覧上のものはとりあえず縦100*横200） %>
+<%# TODO:202101222ジャンル検索リンクがワイヤーフレーム（エンドユーザ側P6）上に見当たらないが、エンドユーザ側UI Flowsに記されているので、勝手に作成し、チームで共有する（トップページは未。商品一覧と商品詳細ページに実装した） %>
+
 <%# <div class="container"> %>
 <%# <div class="row"> %>
-<%= render 'partial/index_for_end_of_user', page_name:"商品一覧" , objects:@items %>
+<h2><%= @page_name %><span>（全<%= @items.count%>件）</span></h2>
+<div id="item-index-space">
+  <% @items.each do |item| %>
+  <div class="item-space" id="#{item.id}-space">
+    <%= link_to item_path(item)%>
+    <%= attachment_image_tag(item, :image_id, :fill, 100, 200, fallback: "no-image-icon.jpg") %>
+    <br>
+    <%= item.name %>
+    \<%= price_with_tax(item.price).to_s(:delimited, delimiter: ',') %>
+    <%= link_to item.genre_name, items_path("genre_id") %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
 <%# </div> %>
 <%# <div class="row"> %>
 <%# </div> %>

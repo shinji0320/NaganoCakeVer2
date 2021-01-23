@@ -1,6 +1,5 @@
-<%# TODO:20210120@cart_item：カートに入れる商品の詳細（customer_idやitem_idはコントローラ側で取得する） %>
-<%# TODO:20210120@item：商品の詳細を表示する用 %>
 <%# TODO:20210120注文できる個数の最小・最大値をチームで設定する（とりあえず現在1と1000） %>
+<%# TODO:202101222ジャンル検索リンクがワイヤーフレーム（エンドユーザ側P6）上に見当たらないが、エンドユーザ側UI Flowsに記されているので勝手に作成したので、チームで共有する（ジャンル名を表示し、それがリンクになっている） %>
 
 <%# <div class="container"> %>
 <%# <div class="row"> %>
@@ -9,9 +8,12 @@
 <%# </div> %>
 <%# <div class="column"> %>
 <%= form_with model:@cart_item, local:true do |f| %>
-<h3>@item.name</h3>
+<h3 id="item-name">@item.name</h3>
 <p id="item-detail">@item.detail</p>
-<p id="item-price"><span>￥<%= render "partial/expression_of_price_with_tax", item_price:item.price %></span>（税込み）</p>
+<div class="form-group">
+  <p id="item-price"><span>￥<%= price_with_tax(item.price).to_s(:delimited, delimiter: ',') %></span>（税込み）</p>
+  <%= link_to @item.genre_name, items_path("genre_id") %>
+</div>
 <%= f.number_field :count, id: "item-count", min:1, max: 1000,placeholder: "個数選択"%>
 <%= f.submit "カートに入れる"%>
 <% end %>

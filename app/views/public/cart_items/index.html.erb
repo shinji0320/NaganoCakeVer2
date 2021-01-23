@@ -1,4 +1,4 @@
-<%# TODO:@cart_item：現在のカートの中身を取得する %>
+<%# TODO:20210121カート内商品一覧の画像のサイズ：とりあえず縦30*横50 %>
 
 <%# <div class="container"> %>
 <%# <div class="row"> %>
@@ -6,22 +6,66 @@
 <div id="page-name">ショッピングカート</div>
 <%# </div> %>
 <%# <div class="column"> %>
-<%= link_to "カートを空にする", cart_item_path(@cart_items), method: :delete, class: "btn btn-sm btn-danger", id: "empty-cart"%>
+<%= link_to "カートを空にする", public_cart_items_empty_path(@cart_items), method: :delete, class: "btn btn-sm btn-danger", id: "empty-cart"%>
 <%# </div> %>
 <%# </div> %>
 <%# <div class="row"> %>
-<%= render "partial/index" cart_items:@cart_items %>
+<table>
+  <tr>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th></th>
+  </tr>
+
+  <% total = 0 %>
+
+  <% @cart_items.each do |cart_item| %>
+  <%= form_with model:cart_item, local:true do |f| %>
+  <% item = Item.find_by(id: cart_item_item_id) %>
+  <tr>
+    <td>
+      <%= link_to item_path(cart_item_item_id)%>
+      <%= attachment_image_tag(item, :image_id, :fill, 30, 50, fallback: "no-image-icon.jpg") %>
+      <p class="cart-item-name">item.name</p>
+      <% end %>
+    </td>
+    <td>
+      <%= price_with_tax(item.price).to_s(:delimited, delimiter: ',') %>
+    </td>
+    <td>
+      <%= f.number_field :count, id: "item-count", min:1, max: 1000,placeholder: "0" %>
+      <%= f.submit "変更"%>
+    </td>
+    <td>
+      <%= price_with_tax(item.price * cart_item.count).delimited_digits %>
+    </td>
+    <td>
+      <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger", id: "delete_cart_item_#{cart_item.id}"%>
+    </td>
+  </tr>
+  total += item.price
+  <% end %>
+  <% end %>
+</table>
 <%# </div> %>
 <%# <div class="row"> %>
 <%# <div class="column"> %>
-<%# TODO:20210121買い物を続ける %>
+<%= link_to "買い物を続ける", root_path, class: "btn btn-sm btn-primary"%>
 <%# </div> %>
 <%# <div class="column"> %>
-<%# TODO:20210121合計金額用テーブル %>
+
+<table>
+  <tr>
+    <td>合計金額</td>
+    <td>total.delimited_digits</td>
+  </tr>
+</table>
 <%# </div> %>
 <%# </div> %>
 <%# </div> %>
 
 <div>
-  <%# TODO:20210121「情報入力に進む」ボタン %>
+  <%= link_to "情報入力に進む", public_orders_new_path, class: "btn btn-sm btn-success"%>
 </div>
