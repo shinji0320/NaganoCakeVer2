@@ -3,18 +3,9 @@
 
 class Public::ItemsController < ApplicationController
 
-  def def index(condition)
-    case condition
-    when "id"
-      @items = Item.where(params:id).page(params[:page]).per(8).reverse_order
-      @page_name = "商品一覧"
-    when "genre_id"
-      @items = Item.where(params:genre_id).page(params[:page]).per(8).reverse_order
-      @page_name = "ジャンル一覧"
-    else
-      flash[:danger] = "Error: Missing of a search condition."
-    end
-    redirect_to items_path
+  def index
+    @genres = Genre.all
+    @items = Item.Where(is_sold: ture).all
   end
 
   # TODO:0210122indexに引数を付けず、検索条件で分離するやり方。不要なら削除
