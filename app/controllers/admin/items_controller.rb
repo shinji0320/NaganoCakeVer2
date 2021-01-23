@@ -27,6 +27,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:success] = "商品内容をを変更しました"
       redirect_to admin_item_path(@item)
@@ -37,6 +38,6 @@ class Admin::ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:product).permit(:name, :image, :detail, :genre_id, :price, :is_sold)
+    params.require(:item).permit(:name, :detail, :genre_id, :is_sold, :price)
   end
 end

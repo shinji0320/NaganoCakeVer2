@@ -5,6 +5,6 @@ class Item < ApplicationRecord
   belongs_to :genre
   attachment :image
   validates :name, uniqueness: true
-  validates :genre_id, :name, :detail, :image_id, :price, :is_sold, presence: true
+  # validates :genre_id, :name, :detail, :image_id, :price, :is_sold, presence: true
 
 end
