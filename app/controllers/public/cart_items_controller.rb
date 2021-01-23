@@ -17,7 +17,6 @@ class Public::CartItemsController < ApplicationController
   def update # カート内個数の変更
   end
 
-
   def empty_cart
     @cart_items = Cart_item.current_customer.id
   end
