@@ -1,8 +1,15 @@
-<%# <div class="container"> %>
-<%# <div class="row"> %>
-<%= render 'partial/index_for_end_of_user', page_name:"商品一覧" , objects:@items %>
-<%# </div> %>
-<%# <div class="row"> %>
-<%# </div> %>
-<%= paginate @items %>
-<%# </div> %>
+<h2>商品一覧<span>（全<%= @items.count%>件）</span></h2>
+	<% @items.each do |item| %>
+	  <%= link_to public_item_path(item.id) do %>
+      <div>
+        <%#= attachment_image_tag(item, :image, size: "100x100", fallback: "") %>
+      </div>
+      <p>
+        <%= item.name %>
+      </p>
+      <p>
+        ¥<%= item.price.to_s(:delimited) %>
+      </p>
+    <% end %>
+	<% end %>
+<div><%= paginate(@items) %></div>
