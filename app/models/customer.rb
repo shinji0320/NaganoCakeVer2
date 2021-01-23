@@ -4,9 +4,12 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :addresses
+  has_many :orders
+  has_many :cart_items
+
   validates :first_name, :last_name, :kana_first_name, :kana_last_name, :postal_code,
             :address, :telephone_number, presence: true
   validates :is_deleted, inclusion:{in: [true, false]}
-  has_many :orders
 
 end

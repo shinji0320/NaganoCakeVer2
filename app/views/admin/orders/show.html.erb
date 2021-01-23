@@ -1,114 +1,90 @@
-<h2>注文履歴詳細</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>注文履歴詳細</h2>
 
-<table>
-  <tbody>
-    <tr>
-      <th>購入者</th>
-      <td><%= order.customer.name %></td>
-    </tr>
-    <tr>
-      <th>注文日</th>
-      <td><%= order.created_at %></td>
-    </tr>
-    <tr>
-      <th>配送先</th>
-      <td><%= order.address %></td>
-    </tr>
-    <tr>
-      <th>支払方法</th>
-      <td><%= order.payment_method %></td>
-    </tr>
-    <tr>
-      <th>注文ステータス</th>
-      <td><%= order.status %></td>
-      <%= link_to "更新", admin_order_path(@order), class: "btn btn-sm btn-success"  %>
-    </tr>
-  </tbody>
-</table>
+      <table class="table table-hover table-bordered">
+        <tbody>
+          <tr>
+            <td>購入者</td>
+            <td><%= @order.customer.first_name %><%= @order.customer.last_name %></td>
+          </tr>
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at %></td>
+          </tr>
+          <tr>
+            <td>配送先</td>
+            <td><%= @order.address %></td>
+          </tr>
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <td>注文ステータス</td>
+            <td>
+              <%= form_with model: @order, url:'/admin/orders/:id', local:true do |f| %>
+                <%= f.select :status, [['入金待ち'], ['入金確認'], ['制作中'], ['発送準備中'], ['発送済み']], prompt: "入金待ち" %>
+                <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+      <div class="col-8">
 
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td><%= order_item.item.name%></td>
+            <td><%= order_item.item.price%></td>
+            <td><%= order_item.item.detail%></td>
+            <% tax = 1.1 %>
+            <% subtotal = order_item.item.price * tax * order_item.count %>
+            <td><%= subtotal %></td>
+          <%= form_with model:@order_itemsto_xml, local:true do |f| %>
+            <td><%= f.select :maikng_status, [['作成待ち'], ['制作中'], ['作成完了']], prompt: "着手不可" %></td>
+            <td><%= f.submit "更新", class: "btn btn-sm btn-success" %></td>
+          <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th>制作ステータス</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<h2>注文履歴詳細</h2>
+      <div class="col-4">
+      <table>
+        <tbody>
+          <tr>
+            <td>商品合計</td>
+            
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td><%= @order.shipping_cost %>円</td>
+          </tr>
+          <tr>
+            <td>請求金額合計</td>
+            <td><%= @order.total_price %>円</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
 
-<table>
-  <tbody>
-    <tr>
-      <th>購入者</th>
-      <td><%= order.customer.name %></td>
-    </tr>
-    <tr>
-      <th>注文日</th>
-      <td><%= order.created_at %></td>
-    </tr>
-    <tr>
-      <th>配送先</th>
-      <td><%= order.address %></td>
-    </tr>
-    <tr>
-      <th>支払方法</th>
-      <td><%= order.payment_method %></td>
-    </tr>
-    <tr>
-      <th>注文ステータス</th>
-      <td><%= order.status %></td>
-      <%= link_to "更新", admin_order_path(@order), class: "btn btn-sm btn-success"  %>
-    </tr>
-  </tbody>
-</table>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th>制作ステータス</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<<<<<<< HEAD======   <% @order.order_items.ecah do |order_item| %>
-    <tr>
-      <td><%= order_item.item.name%></td>
-      <td><%= order_item.item.price%></td>
-      <td><%= order_item.item.detail%></td>
-      <% tax = 1.1 %>
-      <% subtotal = order_item.item.price * tax * order_item.item.detail %>
-      <td><%= subtotal %></td>
-      <td><%= order.making_status%></td>
-      <td><%= link_to "更新", admin_order_order_item_path(@order, @order_item), class: "btn btn-sm btn-success" %></td>
-    </tr>
-   <% end %>
-  </tbody>
-</table>
-
-
-<table>
-  <tbody>
-    <tr>
-      <th>商品合計</th>
-      <td><%= order.purchased_price %>円</td>
-    </tr>
-    <tr>
-      <th>送料</th>
-      <td><%= order.shipping_cost %>円</td>
-    </tr>
-    <tr>
-      <th>請求金額合計</th>
-      <td><%= order.total_price %>円</td>
-    </tr>
-  </tbody>
-</table>
+    </div>
+  </div>
+</div>
