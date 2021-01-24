@@ -208,37 +208,37 @@ Item.create!(
         }
     ]
 )
-OrderItem.create!(
-    [
-        {
-            item_id: "1",
-            order_id: "1",
-            count: "3",
-            making_status: "制作待ち",
-            purchased_price: "3700"
-        },
-        {
-            item_id: "2",
-            order_id: "2",
-            count: "200",
-            making_status: "制作完了",
-            purchased_price: "12000"
-        },
-        {
-            item_id: "3",
-            order_id: "3",
-            count: "24",
-            making_status: "制作待ち",
-            purchased_price: "1000"
-        }
-    ]
-)
-CartItem.create!(
-    [
-        {
-            customer_id: "3",
-            item_id: "3",
-            count: "23"
-        }
-    ]
-)
+# OrderItem.create!(
+#     [
+#         {
+#             item_id: "1",
+#             order_id: "1",
+#             count: "3",
+#             making_status: "制作待ち",
+#             purchased_price: "3700"
+#         },
+#         {
+#             item_id: "2",
+#             order_id: "2",
+#             count: "200",
+#             making_status: "制作完了",
+#             purchased_price: "12000"
+#         },
+#         {
+#             item_id: "3",
+#             order_id: "3",
+#             count: "24",
+#             making_status: "制作待ち",
+#             purchased_price: "1000"
+#         }
+#     ]
+# )
+# CartItem.create!(
+#     [
+#         {
+#             customer_id: "3",
+#             item_id: "3",
+#             count: "23"
+#         }
+#     ]
+# )
