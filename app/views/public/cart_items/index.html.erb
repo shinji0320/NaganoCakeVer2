@@ -7,43 +7,43 @@
 <%# </div> %>
 <%# <div class="row"> %>
 <table>
-  <tr>
-    <th>商品名</th>
-    <th>単価（税込）</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th></th>
-  </tr>
-
-  <% @cart_items.each do |cart_item| %>
-  <tr>
-    <td>
-      <%#= attachment_image_tag(cart_item, :image, size: "60x60", fallback: "no-image.jpg") %>
-      <%= cart_item.item.name %>
-    </td>
-    <td>
-      <%#= price_with_tax(cart_item.item.price).to_s(:delimited, delimiter: ',') %>
-    </td>
-    <td>
-      <%= form_with mode: cart_item, url: public_cart_item_path(cart_item), local: true do |f| %>
-        <%= f.select :count, options_for_select((1..10).to_a), include_blank: cart_item.count %>
-        <%= f.submit "変更"%>
-      <% end %>
-    </td>
-    <td>
-      <%#= price_with_tax(cart_item.item.price * cart_item.count).delimited_digits %>
-    </td>
-    <td>
-      <%= link_to "削除する", public_cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger" %>
-    </td>
-  </tr>
-  <% end %>
- -->
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td>
+        <%#= attachment_image_tag(cart_item, :image, size: "60x60", fallback: "no-image.jpg") %>
+        <%= cart_item.item.name %>
+      </td>
+      <td>
+        <%# tax = 1.1 %>
+        <%= (cart_item.item.price * @tax).to_i.to_s(:delimited, delimiter: ',') %>
+      </td>
+      <td>
+        <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), local: true, method: :patch do |f| %>
+          <%= f.select :count, options_for_select((1..10).to_a, {selected: cart_item.count.to_i}) %>
+          <%= f.submit "変更"%>
+        <% end %>
+      </td>
+      <%# tax = 1.1 %>
+      <% @subtotal = cart_item.item.price * @tax * cart_item.count %>
+      <td><%= @subtotal.to_i.to_s(:delimited, delimiter: ',') %></td>
+      <td>
+        <%= link_to "削除する", public_cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
-<<<<<<< HEAD
 
-=======
->>>>>>> 3730b492e05b66977c1f5cef9fc707c040597b14
 <%# </div> %>
 <%# <div class="row"> %>
 <%# <div class="column"> %>
@@ -51,10 +51,12 @@
 <%# </div> %>
 <%# <div class="column"> %>
 <table>
-  <tr>
-    <td>合計金額</td>
-    <td><%#=total.delimited_digits %></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td>合計金額</td>
+      <td><%= (@item_total * @tax).to_i.to_s(:delimited, delimiter: ',')%></td>
+    </tr>
+  </tbody>
 </table>
 <%# </div> %>
 <%# </div> %>
