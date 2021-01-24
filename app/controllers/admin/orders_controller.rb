@@ -6,12 +6,17 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    # 商品合計の計算方法
+    @item_total = 0
+    @order.order_items.each do |order_item|
+      @item_total += order_item.purchased_price * order_item.count
+    end
   end
 
   def update
     @order = Order.find(params[:id])
-    if @order.update(making_status_params)
-      flash[:success] = "をを変更しました"
+    if @order.update(status_params)
+      flash[:success] = "注文ステータスを変更しました"
       redirect_to admin_order_path(@order)
     else
       render :show
@@ -19,7 +24,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   private
-  def making_status_params
-    params.require(:order).permit(:making_status)
+  def status_params
+    params.require(:order).permit(:status)
   end
 end
