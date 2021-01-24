@@ -32,7 +32,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
   end
 
-
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
