@@ -8,6 +8,9 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @orders = Order.all
+    @item_total = 0
+    @order.order_items.each do |order_item|
+      @item_total += order_item.purchased_price * order_item.count
     if @order.save
       redirect_to public_orders_complete_path
     end
