@@ -24,7 +24,7 @@
               <%= item.id %>
             </td>
             <td>
-              <%= link_to admin_item_path(item) do %>
+              <%= link_to admin_item_path(item), :style=>"color:black;" do %>
                 <%= item.name %>
               <% end %>
             </td>
@@ -36,9 +36,9 @@
             </td>
             <td>
               <% if item.is_sold == true %>
-                <p>販売中</p>
+                <p class = "text-success">販売中</p>
               <% elsif item.is_sold == false %>
-                <p>販売停止中</p>
+                <p class = "text-secondary">販売停止中</p>
               <% end %>
             </td>
           </tr>

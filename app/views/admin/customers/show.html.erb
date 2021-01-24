@@ -1,47 +1,56 @@
-<h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h2>
 <div class="container">
+<h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h2>
+<%= flash[:success] %>
  <div class="row">
-  <div class="col-12">
-<table class="table table-borderless">
-  <tr class="d-flex">
-    <th class="col-3">顧客ID</th>
-    <td class="col-3"><%= @customer.id %></td>
-  </tr>
-  <tr class="d-flex">
-    <th class="col-3">氏名</th>
-    <td class="col-3"><%= @customer.first_name %><%= @customer.last_name %></td>
-  </tr>
-  <tr class="d-flex">
-    <th class="col-3">フリガナ</th>
-    <td class="col-3"><%= @customer.kana_first_name %><%= @customer.kana_last_name %></td>
-  </tr>
-  <tr class="d-flex">
-    <th class="col-3">郵便番号</th>
-    <td class="col-3"><%= @customer.postal_code %></td>
-  </tr>
-  <tr class="d-flex"> 
-    <th class="col-3">電話番号</th>
-    <td class="col-3"><%= @customer.telephone_number %></td>
-  </tr>
-  <tr class="d-flex">
-    <th class="col-3">メールアドレス</th>
-    <td class="col-3"><%= @customer.email %></td>
-  </tr>
-  <tr class="d-flex">
-    <th class="col-3">会員ステータス</th>
-    <td class="col-3">
-      <% if @customer.is_deleted == true %>
-        無効
-      <% elsif @customer.is_deleted == false %>
-    　   有効
-      <% end %>
-    </td>
-  </tr>
-</table>
-</div>
-</div>
+  <div class="">
+    <table class="table table-borderless">
+      <tr class="d-flex">
+        <th class="col-6">顧客ID</th>
+        <td class="col-6"><%= @customer.id %></td>
+      </tr>
+      <tr class="d-flex">
+        <th class="col-6">氏名</th>
+        <td class="col-6"><%= @customer.first_name %><%= @customer.last_name %></td>
+      </tr>
+      <tr class="d-flex">
+        <th class="col-6">フリガナ</th>
+        <td class="col-9"><%= @customer.kana_first_name %><%= @customer.kana_last_name %></td>
+      </tr>
+      <tr class="d-flex">
+        <th class="col-6">郵便番号</th>
+        <td class="col-3"><%= @customer.postal_code %></td>
+      </tr>
+      <tr class="d-flex">
+        <th class="col-6">住所</th>
+        <td class="col-12"><%= @customer.address %></td>
+      </tr>
+      <tr class="d-flex"> 
+        <th class="col-6">電話番号</th>
+        <td class="col-12"><%= @customer.telephone_number %></td>
+      </tr>
+      <tr class="d-flex">
+        <th class="col-6">メールアドレス</th>
+        <td class="col-3"><%= @customer.email %></td>
+      </tr>
+      <tr class="d-flex">
+        <th class="col-6">会員ステータス</th>
+        <td class="col-3">
+          <% if @customer.is_deleted == true %>
+            <p class = "text-secondary">無効</p>
+          <% elsif @customer.is_deleted == false %>
+            <p class = "text-success">有効</p>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+    </div>
+  </div>
 </div>
 <div class="row justify-content-center">
-  <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success mg-5" %>
+  <div style="padding: 20px;">
+  <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success" %>
+  </div>
+  <div style="padding: 20px;">
   <%= link_to " 注文履歴一覧を見る", admin_order_path(@customer), class: "btn btn-primary" %>
+  </div>
 </div>
