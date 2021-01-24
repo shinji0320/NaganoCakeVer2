@@ -13,7 +13,7 @@
         <% tax = 1.1 %>
         ¥ <%= (@item.price * tax).to_i.to_s(:delimited) %><span id="with-tax">  (税込)</span>
       </h5>
-      <%= form_with model:@cart_item , url: public_cart_items_path do |f| %>
+      <%= form_with model: @cart_item, url: public_item_cart_items_path do |f| %>
         <%= f.select :count, options_for_select((1..10).to_a), include_blank: "個数選択" %>
         <%= f.submit "カートに入れる", class: " btn btn-primary" %>
       <% end %>
