@@ -25,7 +25,6 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
-
   def update # カート内個数の変更
     @cart_item.update(count: params[:count].to_i)
     redirect_to public_cart_items_path
@@ -45,6 +44,10 @@ class Public::CartItemsController < ApplicationController
 
   private
 
+    def set_ca_item
+    @line_item = current_cart.line_items.find_by(product_id: params[:product_id])
+    end
+  
     def cart_item_params
      params.require(:cart_item).permit(:item_id, :count, :customer_id)
     end
