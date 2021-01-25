@@ -8,7 +8,11 @@
           <tr>
             <td>購入者</td>
             <td>
-            <%= link_to "@order.customer.first_name", admin_customer_path(@order.customer) %><%= @order.customer.last_name %></td>
+              <%= link_to admin_customer_path(@order.customer) do %>
+                <%= @order.customer.first_name %>
+                <%= @order.customer.last_name %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <td>注文日</td>
@@ -81,7 +85,7 @@
           </tr>
           <tr>
             <td>請求金額合計</td>
-            <td><%= @order.total_price %>円</td>
+            <td><%= @item_total + 800 %>円</td>
           </tr>
         </tbody>
       </table>
