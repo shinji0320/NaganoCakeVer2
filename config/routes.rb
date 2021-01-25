@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :cart_items, only: [:index, :destroy, :update] do
+    resources :cart_items, only: [:index, :update, :destroy] do
       collection do
         delete 'empty'
       end
@@ -25,10 +25,10 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show, :create] do
       resources :cart_items, only: [:create]
     end
+
+    resources :orders, only: [:new, :create, :index, :show]
     get 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
-    resources :orders, only: [:new, :create, :index, :show]
-
 
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
 
