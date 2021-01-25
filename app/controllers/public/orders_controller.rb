@@ -2,13 +2,14 @@ class Public::OrdersController < ApplicationController
  before_action :authenticate_customer!
 
   def new
-     @orders = Order.all
+     @orders = Order.new
      @customer = current_customer
   end
 
   def confirm
     @order = Order.new
-    @order.payment_method = params[:order][:payment_method]
+    @order.payment_method = (params[:order][:payment_method]).to_i
+    # @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
     @item_total = 0
     @cart_items.each do |cart_item|
@@ -19,11 +20,11 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.first_name + current_customer.last_name
     elsif params[:order][:address_option] == '1'
-    　@address = Address.find(params[:order][:address_id])
-    　@order.address = @address.address
+      @address = Address.find(params[:order][:address_id])
+      @order.address = @address.address
       @order.postal_code = @address.postal_code
       @order.name = @address.name
-    else params[:order][:address_option] == '2'
+    elsif params[:order][:address_option] == '2'
       @order.address = params[:order][:address]
       @order.postal_code = params[:order][:postal_code]
       @order.name = params[:order][:name]
@@ -33,6 +34,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    # binding.pry
     if @order.save
       redirect_to public_orders_complete_path
     end
