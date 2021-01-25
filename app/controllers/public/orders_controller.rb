@@ -28,9 +28,6 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.name = params[:order][:name]
     end
-
-
-
   end
 
   def create
