@@ -1,7 +1,7 @@
     <div class='container px-12 px-sm-0'>
         <h3>注文情報確認画面</h3>
             <div class='row'>
-                <div class='col-md-8'>
+                <div class='col-md-7'>
                     <table>
                         <thread>
                             <tr>
@@ -13,39 +13,45 @@
                             </tr>
                         </thread>
                         <tbody>
-                            <% @orders.each do |order| %>
+                            <% @cart_items.each do |cart_item| %>
                                 <tr>
-                                  <td <%= attachment_image_tag(item, :image_id, :fill, 50, 50, fallback: "no_image.jpg") %>>
-                                      <%= order.name %></td>
-                                  <td><%= order.purchased_price %></td>
-                                  <td><%= order.count %></td>
+                                  <td>
+                                      <%= cart_item.item.name %></td>
+                                  <td><%= (cart_item.item.price*1.1).to_i %></td>
+                                  <td><%= cart_item.count %></td>
                                   <% tax = 1.1 %>
-                                  <% @subtotal = order_item.item.price * tax * order_item.item.detail %>
+                                  <% @subtotal = (cart_item.item.price * tax * cart_item.count).to_i %>
                                   <td><%= @subtotal %></td>
                                 </tr>
                             <% end %>
                         </tbody>
                     </tablle>
                 </div>
-                <div class='col-md-4'>
+                <div class='col-md-7'>
                     <table>
                         <thread>
                             <tbody>
-                                <% @orders.each do |order| %>
                               <tr>
-                                <td>送料</td><td><%= order.shippping_cost %></td>
+                                  <!--普通は送料モジュールを使用する-->
+                                <td>送料</td><td>800</td>
                                 <td>商品合計</td><td><%= @item_total %></td>
-                                <td>請求金額</td><td><%= otder.total_price %></td>
+                                <td>請求金額</td><td><%= @item_total + 800 %></td>
                               </tr>
-                                <% end %>
                             </tbody>
                         </thread>
                     </table>
                 </div>
             </div>
     </div>
+    <%= form_with model: @order, url:public_orders_path do |f| %>
     <div class ="payment_method">支払い方法</div>
-        <%= order.payment_method %>
+        <%= @order.payment_method %>
     <div class ="payment_method">お届け先</div>
-        <%= order.adress %>
-        <%=f.submit "注文を確定する", public_orders_complete, class:"btn btn-success" %>
+        <%= @order.address %>
+         <%= f.hidden_field :name, :value => @order.name %>
+         <%= f.hidden_field :address, :value => @order.address %>
+         <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+         <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+         <%= f.hidden_field :total_price, :value => (@item_total + 800) %>
+        <%=f.submit "注文を確定する", class:"btn btn-success" %>
+    <% end %>

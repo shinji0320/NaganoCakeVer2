@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-8">
-      <h3>ログイン</h3>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h3 class="bg-light">ログイン</h3>
+      <p class="bg-light">会員の方はこちらからログイン</p>
       <% if flash[:notice] %>
         <div class="flash">
           <%= flash[:notice] %>
@@ -9,22 +10,22 @@
       <% end %>
       <%= render 'layouts/notifications' %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
+        <div class="field mt-2">
           <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
-        <div class="field">
+        <div class="field mt-2">
           <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+          <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
 
-        <div class="actions">
+        <div class="actions mt-4">
            <%= f.submit "ログイン", class: "btn btn-sm btn-success" %>
         </div>
       <% end %>
 
-      <h4>会員登録がお済みでない方</h4>
+      <h5 class="bg-light m-4">会員登録がお済みでない方</h4>
       <%= link_to "こちら", new_customer_registration_path %><span>から新規登録を行ってください。</span>
     </div>
   </div>
