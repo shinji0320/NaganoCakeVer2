@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="border-top border-bottom">
       <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
           <a class="navbar-brand p-3" href="/">
@@ -52,7 +52,7 @@
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-white m-3 btn btn-sm btn-success" %>
                 </li>
                 </div>
-              <% else %>
+                <% else %>
                 <li class="nav-item">
                   <%= link_to "About", homes_about_path, class: "fas fa-link nav-link text-teal m-3" %>
                 </li>
@@ -73,8 +73,7 @@
       <main class="border-top border-bottom border-secondary pt-3 pb-3">
       <%= yield %>
       </main>
-    <footer>
-      </br></br></br></br>
+    <footer class="border-top border-secondary">
     </footer>
   </body>
 </html>

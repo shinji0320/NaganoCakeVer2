@@ -18,7 +18,7 @@
   </div>
   <div class="row">
     <% @item.each do |item| %>
-    <div class="col-2 mt-1 ml-2">
+    <div class="top-item col-2 mt-1">
       <%= link_to public_item_path(item.id) do %>
         <%= attachment_image_tag(item, :image, size: "150x150", fallback: "no_image.jpg") %></br>
         <%= item.name %></br>
@@ -26,7 +26,7 @@
       <% end %>
     </div>
     <% end %>
-    <div class="d-flex align-items-end text-right">
+     <div class="d-flex align-items-end text-right">
       <%= link_to "全ての商品を見る＞", public_items_path, class: "fas fa-gifts nav-link text-teal m-3" %>
     </div>
   </div>
