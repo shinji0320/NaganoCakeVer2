@@ -9,12 +9,13 @@
   </head>
 
   <body>
-    <header>
+    <header class="border-bottom">
       <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
           <a class="navbar-brand p-3" href="/">
-            <h3 class="title-logo">ながの<span class="title-logo-2">CAKE</span></h3>
+            <h3 class="title-logo font-weight-bold">ながの<span class="title-logo-2 font-weight-bold">CAKE</span></h3>
           </a>
+            <%= render 'layouts/notifications' %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icgit on"></span>
           </button>
@@ -51,7 +52,7 @@
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-white m-3 btn btn-sm btn-success" %>
                 </li>
                 </div>
-              <% else %>
+                <% else %>
                 <li class="nav-item">
                   <%= link_to "About", homes_about_path, class: "fas fa-link nav-link text-teal m-3" %>
                 </li>
@@ -69,11 +70,10 @@
           </div>
         </nav>
       </header>
-      <main>
+      <main class="border-secondary pt-3 pb-3 h-75">
       <%= yield %>
       </main>
     <footer>
-      </br></br></br></br>
     </footer>
   </body>
 </html>
