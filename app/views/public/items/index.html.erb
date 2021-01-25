@@ -6,7 +6,7 @@
 	<div class="item-presentation">
 	  <%= link_to public_item_path(item.id) do %>
       <div class="item-picture">
-        <%= attachment_image_tag(item, :image, size: "200x100", fallback: "no_image.jpg") %>
+        <%#= attachment_image_tag(item, :image, size: "200x100", fallback: "no_image.jpg") %>
       </div>
       <p class="item-name">
         <%= item.name %>

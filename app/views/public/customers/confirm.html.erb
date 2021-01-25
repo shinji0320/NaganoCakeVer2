@@ -5,9 +5,10 @@
       <p>退会すると、会員登録情報や</br>
       これまでの購入履歴が閲覧できなくなります。</br>
       退会する場合は、「退会する」をクリックしてください。</p>
-
-      <%= link_to "退会しない", public_customer_path(@customer.id), class:"btn btn-info btn-sm" %>
-      <%= link_to "退会する", hide_public_customer_path(@customer.id), method: :patch, class:"btn btn-sm btn-danger" %>
+      <div class="col-6 mt-2 mx-auto">
+        <%= link_to "退会しない", public_customer_path(@customer.id), class:"btn btn-info btn-sm" %>
+        <%= link_to "退会する", hide_public_customer_path(@customer.id), method: :patch, class:"btn btn-sm btn-danger" %>
+      </div>
     </div>
   </div>
 </div>
