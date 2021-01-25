@@ -3,12 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
       <h3>ログイン</h3>
       <p>会員の方はこちらからログイン</p>
-      <% if flash[:notice] %>
-        <div class="flash">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <%= render 'layouts/notifications' %>
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field mt-2">
           <%= f.label :email, "メールアドレス" %></br>
