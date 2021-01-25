@@ -16,7 +16,7 @@
           </tr>
           <tr>
             <td>注文日</td>
-            <td><%= @order.created_at %></td>
+            <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
           </tr>
           <tr>
             <td>配送先</td>
@@ -52,7 +52,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @order_items.each do |order_item| %>
+        <% @order.order_items.each do |order_item| %>
           <tr>
             <td><%= order_item.item.name%></td>
             <td><%= order_item.item.price%></td>
@@ -85,7 +85,7 @@
           </tr>
           <tr>
             <td>請求金額合計</td>
-            <td><%= @item_total + 800 %>円</td>
+            <td><%= @order.total_price %>円</td>
           </tr>
         </tbody>
       </table>

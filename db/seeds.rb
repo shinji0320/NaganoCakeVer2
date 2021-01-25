@@ -94,60 +94,60 @@ Genre.create!(
         }
     ]
 )
-Order.create!(
-    [
-        {
-            payment_method: "0",
-            status: "入金確認",
-            shipping_cost: "800",
-            customer_id: "5",
-            address: "千葉県浦安市舞浜１−１",
-            postal_code: "279-0031",
-            name: "東京シー",
-            total_price: "4500"
-        },
-        {
-            payment_method: "0",
-            status: "製作中",
-            shipping_cost: "800",
-            customer_id: "5",
-            address: "千葉県浦安市舞浜１−１",
-            postal_code: "279-0031",
-            name: "東京シー",
-            total_price: "50000"
-        },
-        {
-            payment_method: "0",
-            status: "発送済み",
-            shipping_cost: "800",
-            customer_id: "5",
-            address: "千葉県浦安市舞浜１−１",
-            postal_code: "279-0031",
-            name: "東京シー",
-            total_price: "6000"
-        },
-        {
-            payment_method: "0",
-            status: "製作中",
-            shipping_cost: "800",
-            customer_id: "1",
-            address: "大阪府大阪市中央区難波4丁目7-14難波フロントビル４階",
-            postal_code: "5240076",
-            name: "難波太郎",
-            total_price: "120"
-        },
-        {
-            payment_method: "0",
-            status: "発送済み",
-            shipping_cost: "800",
-            customer_id: "4",
-            address: "東京都渋谷区神南１丁目１９−１１ パークウェースクエスクエア24階",
-            postal_code: "150-0041",
-            name: "渋谷校",
-            total_price: "500"
-        }
-    ]
-)
+# Order.create!(
+#     [
+#         {
+#             payment_method: "0",
+#             status: "入金確認",
+#             shipping_cost: "800",
+#             customer_id: "5",
+#             address: "千葉県浦安市舞浜１−１",
+#             postal_code: "279-0031",
+#             name: "東京シー",
+#             total_price: "4500"
+#         },
+#         {
+#             payment_method: "0",
+#             status: "製作中",
+#             shipping_cost: "800",
+#             customer_id: "5",
+#             address: "千葉県浦安市舞浜１−１",
+#             postal_code: "279-0031",
+#             name: "東京シー",
+#             total_price: "50000"
+#         },
+#         {
+#             payment_method: "0",
+#             status: "発送済み",
+#             shipping_cost: "800",
+#             customer_id: "5",
+#             address: "千葉県浦安市舞浜１−１",
+#             postal_code: "279-0031",
+#             name: "東京シー",
+#             total_price: "6000"
+#         },
+#         {
+#             payment_method: "0",
+#             status: "製作中",
+#             shipping_cost: "800",
+#             customer_id: "1",
+#             address: "大阪府大阪市中央区難波4丁目7-14難波フロントビル４階",
+#             postal_code: "5240076",
+#             name: "難波太郎",
+#             total_price: "120"
+#         },
+#         {
+#             payment_method: "0",
+#             status: "発送済み",
+#             shipping_cost: "800",
+#             customer_id: "4",
+#             address: "東京都渋谷区神南１丁目１９−１１ パークウェースクエスクエア24階",
+#             postal_code: "150-0041",
+#             name: "渋谷校",
+#             total_price: "500"
+#         }
+#     ]
+# )
 # Item.create!(
 #     [
 #         {
