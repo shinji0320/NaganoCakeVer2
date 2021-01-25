@@ -1,15 +1,12 @@
 <div class="container">
   <div class="row">
-    <%= render 'layouts/notifications' %>
-  </div>
-</div>
-  <div class="row">
-    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 px-3">
-      <div class="introduction px-5 ">
-        <p class="px-3 mx-auto">
-          ようこそながのCAKEへ！</br>このサイトは、ケーキ販売のECサイトになります。
-        </br>会員でない方も商品の閲覧はできますが、</br>購入には会員登録が必要になります。
-        </p>
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-8 px-3">
+      <div class="main-visual shadow img-fluid" alt="Responsive image">
+        <h3 class="main-visual-text text-light text-center font-weight-bold">
+          ようこそながのCAKEへ！</h3></br></br>
+          <h4 class="text-light text-center font-weight-bold">このサイトは、ケーキ販売のECサイトになります。
+          </br>会員でない方も商品の閲覧はできますが、</br>購入には会員登録が必要になります。
+        </h4>
       </div>
     </div>
   </div>
@@ -23,14 +20,14 @@
     <% @item.each do |item| %>
     <div class="col-2 mt-1 ml-2">
       <%= link_to public_item_path(item.id) do %>
-        <%#= attachment_image_tag(item, :image, size: "60x60", fallback: "no-image.jpg") %>
-        <%= item.name %>
-        <%= (item.price * @tax).to_i.to_s(:delimited, delimiter: ',') %>
+        <%= attachment_image_tag(item, :image, size: "150x150", fallback: "no_image.jpg") %></br>
+        <%= item.name %></br>
+        <p><span>￥</span><%= (item.price * @tax).to_i.to_s(:delimited, delimiter: ',') %></p>
       <% end %>
     </div>
     <% end %>
-    <div class="col-ofset-8">
-      <%= link_to "全ての商品を見る＞", public_items_path %>
+    <div class="d-flex align-items-end text-right">
+      <%= link_to "全ての商品を見る＞", public_items_path, class: "fas fa-gifts nav-link text-teal m-3" %>
     </div>
   </div>
 </div>
