@@ -26,39 +26,41 @@
 }
 
 .main-visual {
-  background-image: image-url('sweets-887722_1280');
+  background-image: image-url('macarons-5691710_1280');
   background-size: cover;
   width: 100%;
-  height: 400px;
+  height: 550px;
+}
+
+.main-visual-title {
+  padding-top: 100px;
+  font-family: cursive;
+  font-style: italic, oblique;
 }
 
 .main-visual-text {
-  padding-top: 100px;
+  font-family: serif;
 }
 
 .about-visual {
-  background-image: image-url('ingredients-1578688_1280');
-  width: 80%;
-  height: 300px;
+  background-image: image-url('cooking-1940689_1280');
+  width: 100%;
+  height: 400px;
   background-size: 100% 100%;
 }
 
 .title-logo {
-  font-weight: 400;
   font-family:'Fredoka One', sans-serif;
   text-transform:uppercase;
-  display:block;
-  color:green;
+  color:seagreen;
 }
 
 .title-logo-2 {
-  font-weight: 400;
   font-family:'Fredoka One', sans-serif;
   text-transform:uppercase;
-  display:block;
   color:orange;
 }
 
-.text-bg {
-  background-color: lightgray;
+.about-text {
+  font-family: serif;
 }
