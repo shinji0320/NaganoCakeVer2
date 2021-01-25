@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @item_total = 0
     @cart_items.each do |cart_item|
-      @item_total += (cart_item.item.price * cart_item.count * 1.1).to_i
+      @item_total += (cart_item.item.price * cart_item.count * 1.08).to_i
     end
     if params[:order][:address_option] == '0'
       @order.address = current_customer.address
@@ -60,6 +60,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @orders = Order.all
     @order_item = @order.order_items
+
     # 商品合計の計算方法
     @item_total = 0
     @order.order_items.each do |order_item|
