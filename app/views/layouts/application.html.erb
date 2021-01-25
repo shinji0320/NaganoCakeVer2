@@ -3,6 +3,7 @@
   <head>
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,7 +13,7 @@
       <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
           <a class="navbar-brand p-3" href="/">
-            <span>ながのCAKE</span>
+            <h3 class="title-logo">ながの<span class="title-logo-2">CAKE</span></h3>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icgit on"></span>
@@ -20,18 +21,18 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
-                <p class="p-3 text-lightblue">ようこそ、<%= current_customer.first_name %>さん</p>
+                <p class="p-3 text-info">ようこそ、<%= current_customer.first_name %>さん</p>
                 <li class="nav-item">
-                  <%= link_to "マイページ", public_customer_path(current_customer.id), class: "nav-link text-white m-3 btn btn-sm btn-success" %>
+                  <%= link_to "マイページ", public_customer_path(current_customer.id), class: "fas fa-user nav-link text-teal m-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "商品一覧", public_items_path, class: "nav-link text-white m-3 btn btn-sm btn-success" %>
+                  <%= link_to "商品一覧", public_items_path, class: "fas fa-gifts nav-link text-teal m-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "カート", public_cart_items_path, class: "nav-link text-white m-3 btn btn-sm btn-success" %>
+                  <%= link_to "カート", public_cart_items_path, class: "fas fa-shopping-cart nav-link text-teal m-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link text-white m-3 btn btn-sm btn-success" %>
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-teal m-3" %>
                 </li>
                 <% elsif admin_signed_in? %>
                 <li class="nav-item">
@@ -52,16 +53,16 @@
                 </div>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "About", homes_about_path, class: "nav-link text-white m-3 btn btn-sm btn-success" %>
+                  <%= link_to "About", homes_about_path, class: "fas fa-link nav-link text-teal m-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "商品一覧", public_items_path, class: "nav-link text-white m-3 btn btn-sm btn-success" %>
+                  <%= link_to "商品一覧", public_items_path, class: "fas fa-gifts nav-link text-teal m-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "新規登録", new_customer_registration_path, class: "nav-link text-white m-3 btn btn-sm btn-success" %>
+                  <%= link_to "新規登録", new_customer_registration_path, class: "fas fa-user-plus nav-link text-teal m-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-white m-3 btn btn-sm btn-success" %>
+                  <%= link_to "ログイン", new_customer_session_path, class: "fas fa-sign-in-alt nav-link text-teal m-3" %>
                 </li>
               <% end %>
             </ul>
@@ -72,6 +73,7 @@
       <%= yield %>
       </main>
     <footer>
+      </br></br></br></br>
     </footer>
   </body>
 </html>
