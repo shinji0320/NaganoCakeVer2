@@ -1,7 +1,13 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
+    @tax = 1.1
     @cart_items = CartItem.where(customer_id: current_customer)
+    @item_total = 0
+    @cart_items.each do |cart_item|
+      @item_total += cart_item.item.price * cart_item.count
+    end
   end
 
   def create # カートに入れるアクション
@@ -9,30 +15,27 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
     @cart_item.item_id = @item.id
-    # カートに同じ商品がある場合
-    if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
-      cart_item.count += params[:cart_item][:count].to_i
-      cart_item.update
-      flash[:notice] = "Item was successfully added to cart."
-      redirect_to public_cart_items_path
-    # 新しく追加する商品の場合
-    elsif @cart_item.save
-      flash[:notice] = "New Item was successfully added to cart."
-      redirect_to public_cart_items_path
-    else
-      @item = Item.find(params[:item_id])
-      render 'public/items/show'
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+    if cart_item.item_id == @cart_item.item_id
+      new_quantity = cart_item.count + @cart_item.count
+      cart_item.update_attribute(:count, new_quantity)
+      @cart_item.delete
     end
+  end
+    @cart_item.save
+    redirect_to public_cart_items_path
   end
 
   def update # カート内個数の変更
-    @cart_item.update(count: params[:count].to_i)
+    cart_item = CartItem.find(params[:id])
+    cart_item.update(count: params[:cart_item][:count].to_i)
     redirect_to public_cart_items_path
   end
 
   def empty #カートを空にする
-    @cart_items = CartItem.where(customer_id: current_customer)
-    @cart_items.destroy
+    @cart_items = CartItem.where(customer_id: current_customer)
+    @cart_items.destroy_all
     redirect_to public_cart_items_path
   end
 
@@ -44,11 +47,8 @@ class Public::CartItemsController < ApplicationController
 
   private
 
-    def set_ca_item
-    @line_item = current_cart.line_items.find_by(product_id: params[:product_id])
-    end
-  
-    def cart_item_params
-     params.require(:cart_item).permit(:item_id, :count, :customer_id)
-    end
+  def cart_item_params
+    params.require(:cart_item).permit(:item_id, :count, :customer_id)
+  end
+
 end
