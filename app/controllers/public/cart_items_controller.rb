@@ -2,8 +2,13 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
+<<<<<<< HEAD
     @tax = 1.1
     @cart_items = current_customer.cart_items
+=======
+    @tax = 1.08
+    @cart_items = CartItem.where(customer_id: current_customer)
+>>>>>>> develop
     @item_total = 0
     @cart_items.each do |cart_item|
       @item_total += cart_item.item.price * cart_item.count
@@ -27,13 +32,13 @@ class Public::CartItemsController < ApplicationController
     redirect_to public_cart_items_path
   end
 
-  def update # カート内個数の変更
+  def update
     cart_item = CartItem.find(params[:id])
     cart_item.update(count: params[:cart_item][:count].to_i)
     redirect_to public_cart_items_path
   end
 
-  def empty #カートを空にする
+  def empty
     @cart_items = CartItem.where(customer_id: current_customer)
     @cart_items.destroy_all
     redirect_to public_cart_items_path
