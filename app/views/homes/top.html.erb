@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-10 col-sm-10 col-lg-10 col-xl-10 px-3">
-      <div class="main-visual shadow img-fluid" alt="Responsive image">
+      <div class="main-visual mx-auto shadow">
         <h3 class="main-visual-title text-dark text-center font-weight-bold">
           ようこそ<span class="title-logo font-weight-bold"> ながの</span><span class="title-logo-2 font-weight-bold">CAKE</span> へ！</h3></br></br>
           <h4 class="main-visual-text text-body text-center">このサイトは、ケーキ販売のECサイトになります。
@@ -16,17 +16,17 @@
       <h3>新着商品</h3>
     </div>
   </div>
-  <div class="row center-block">
+  <div class="row">
     <% @item.each do |item| %>
-    <div class="top-item col-2 mt-1">
+    <div class="top-item mt-1">
       <%= link_to public_item_path(item.id), :style=>"color:black;" do %>
-        <%= attachment_image_tag(item, :image, size: "150x150", fallback: "no_image.jpg") %></br>
+        <%= attachment_image_tag(item, :image, size: "200x150", fallback: "no_image.jpg") %></br>
         <%= item.name %></br>
         <p><span>￥</span><%= (item.price * @tax).to_i.to_s(:delimited, delimiter: ',') %></p>
       <% end %>
     </div>
     <% end %>
-     <div class="d-flex align-items-end text-right">
+     <div class="col text-right">
       <%= link_to "全ての商品を見る＞", public_items_path, class: "fas fa-gifts nav-link text-teal m-3" %>
     </div>
   </div>

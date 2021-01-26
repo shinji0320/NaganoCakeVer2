@@ -2,8 +2,13 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
+<<<<<<< HEAD
+    @tax = 1.1
+    @cart_items = current_customer.cart_items
+=======
     @tax = 1.08
     @cart_items = CartItem.where(customer_id: current_customer)
+>>>>>>> develop
     @item_total = 0
     @cart_items.each do |cart_item|
       @item_total += cart_item.item.price * cart_item.count
