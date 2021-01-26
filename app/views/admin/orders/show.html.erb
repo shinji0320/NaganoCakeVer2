@@ -57,7 +57,7 @@
             <td><%= order_item.item.name%></td>
             <td><%= order_item.item.price%></td>
             <td><%= order_item.item.detail%></td>
-            <% tax = 1.1 %>
+            <% tax = 1.0 %>
             <% subtotal = order_item.item.price * tax * order_item.count %>
             <td><%= subtotal %></td>
           <%# モデルを一つ渡す方法 %>
