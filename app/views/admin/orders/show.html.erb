@@ -38,7 +38,7 @@
         </tbody>
       </table>
       <div class="row">
-      <div class="col-8">
+      <div class="col">
 
       <table class="table table-hover table-bordered">
         <thead>
@@ -52,7 +52,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @order_items.each do |order_item| %>
+        <% @order.order_items.each do |order_item| %>
           <tr>
             <td><%= order_item.item.name%></td>
             <td><%= order_item.item.price%></td>
@@ -72,12 +72,12 @@
       </table>
       </div>
 
-      <div class="col-4">
+      <div class="col-3 pt-5">
       <table>
         <tbody>
           <tr>
             <td>商品合計</td>
-            <td><%= @item_total %>円</td>
+            <td><%= @item_total.to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <td>送料</td>
@@ -85,7 +85,7 @@
           </tr>
           <tr>
             <td>請求金額合計</td>
-            <td><%= @item_total + 800 %>円</td>
+            <td><%= @order.total_price %>円</td>
           </tr>
         </tbody>
       </table>
