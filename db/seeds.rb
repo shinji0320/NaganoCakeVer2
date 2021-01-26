@@ -97,7 +97,6 @@ Genre.create!(
 # Order.create!(
 #     [
 #         {
-#             payment_method: "0",
 #             status: "入金確認",
 #             shipping_cost: "800",
 #             customer_id: "5",
@@ -107,7 +106,6 @@ Genre.create!(
 #             total_price: "4500"
 #         },
 #         {
-#             payment_method: "0",
 #             status: "製作中",
 #             shipping_cost: "800",
 #             customer_id: "5",
@@ -117,7 +115,6 @@ Genre.create!(
 #             total_price: "50000"
 #         },
 #         {
-#             payment_method: "0",
 #             status: "発送済み",
 #             shipping_cost: "800",
 #             customer_id: "5",
@@ -127,7 +124,6 @@ Genre.create!(
 #             total_price: "6000"
 #         },
 #         {
-#             payment_method: "0",
 #             status: "製作中",
 #             shipping_cost: "800",
 #             customer_id: "1",
@@ -137,7 +133,6 @@ Genre.create!(
 #             total_price: "120"
 #         },
 #         {
-#             payment_method: "0",
 #             status: "発送済み",
 #             shipping_cost: "800",
 #             customer_id: "4",
@@ -214,21 +209,21 @@ Genre.create!(
 #             item_id: "1",
 #             order_id: "1",
 #             count: "3",
-#             making_status: "制作待ち",
+#             making_status: "製作待ち",
 #             purchased_price: "3700"
 #         },
 #         {
 #             item_id: "2",
 #             order_id: "2",
 #             count: "200",
-#             making_status: "制作完了",
+#             making_status: "製作完了",
 #             purchased_price: "12000"
 #         },
 #         {
 #             item_id: "3",
 #             order_id: "3",
 #             count: "24",
-#             making_status: "制作待ち",
+#             making_status: "製作待ち",
 #             purchased_price: "1000"
 #         }
 #     ]

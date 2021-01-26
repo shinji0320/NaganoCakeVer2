@@ -38,7 +38,7 @@
         </tbody>
       </table>
       <div class="row">
-      <div class="col-8">
+      <div class="col">
 
       <table class="table table-hover table-bordered">
         <thead>
@@ -72,12 +72,12 @@
       </table>
       </div>
 
-      <div class="col-4">
+      <div class="col-3 pt-5">
       <table>
         <tbody>
           <tr>
             <td>商品合計</td>
-            <td><%= @item_total %>円</td>
+            <td><%= @item_total.to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <td>送料</td>
