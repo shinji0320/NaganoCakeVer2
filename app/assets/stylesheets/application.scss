@@ -23,13 +23,13 @@
 
 .main-visual {
   background-image: image-url('macarons-5691710_1280');
-  background-size: cover;
-  width: 100%;
-  height: 550px;
+  background-size: 100% 100%;
+  width: 85%;
+  height: 400px;
 }
 
 .main-visual-title {
-  padding-top: 100px;
+  padding-top: 60px;
   font-family: cursive;
   font-style: italic, oblique;
 }
@@ -40,8 +40,8 @@
 
 .about-visual {
   background-image: image-url('cooking-1940689_1280');
-  width: 100%;
-  height: 400px;
+  width: 80%;
+  height: 300px;
   background-size: 100% 100%;
 }
 
@@ -62,5 +62,25 @@
 }
 
 .top-item {
-  margin-left: 80px;
+  margin-left: 70px;
+}
+
+header {
+  background-color: lavender;
+}
+
+footer{
+  background-color: lavender;
+  width: 100%;
+  height: 80px;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
