@@ -27,7 +27,7 @@ before_action :authenticate_customer!
     @cusromer = Customer.find(current_customer.id)
     @cusromer.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会しました。今までのご利用ありがとうございました。"
+    flash[:notice] = "退会しました。"
     redirect_to root_path
   end
 

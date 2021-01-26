@@ -57,11 +57,9 @@
             <td><%= order_item.item.name%></td>
             <td><%= order_item.item.price%></td>
             <td><%= order_item.item.detail%></td>
-            <% tax = 1.0 %>
-            <% subtotal = order_item.item.price * tax * order_item.count %>
+            <% tax = 1.08 %>
+            <% subtotal = (order_item.item.price * tax * order_item.count).to_i.to_s(:delimited, delimiter: ',') %>
             <td><%= subtotal %></td>
-          <%# モデルを一つ渡す方法 %>
-          <%# <%= form_with model:order_item, url: admin_order_order_item_path(order_id: order_item.order_id, id: order_item.id), local:true do |f| %> %>
           <%= form_with model:[order_item.order,order_item], url: admin_order_order_item_path(order_item.id), local:true do |f| %>
             <td><%= f.select :making_status, [['着手不可'], ['製作待ち'], ['製作中'],['製作完了']]%></td>
             <td><%= f.submit "更新", class: "btn btn-sm btn-success" %></td>
