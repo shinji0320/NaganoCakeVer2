@@ -50,7 +50,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.where(customer_id: current_customer)
     @order = Order.new
   end
 

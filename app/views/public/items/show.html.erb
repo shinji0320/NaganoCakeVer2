@@ -10,7 +10,7 @@
         <%= @item.detail %>
       </div>
       <h5 id="price-with-tax-in-profile">
-        <% tax = 1.1 %>
+        <% tax = 1.08 %>
         ¥ <%= (@item.price * tax).to_i.to_s(:delimited) %><span id="with-tax">  (税込)</span>
       </h5>
       <%= form_with model: @cart_item, url: public_item_cart_items_path(@item.id) do |f| %>
