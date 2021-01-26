@@ -36,6 +36,12 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     # binding.pry
     if @order.save
+      @cart_items = current_customer.cart_items
+      @cart_items.each do |cart_item|
+        order_item = OrderItem.new(item_id: cart_item.item.id,order_id: @order.id,count: cart_item.count,purchased_price:( cart_item.item.price * 1.08).to_i)
+        order_item.save
+        cart_item.destroy
+      end
       redirect_to public_orders_complete_path
     end
   end

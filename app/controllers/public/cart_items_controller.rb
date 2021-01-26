@@ -3,7 +3,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @tax = 1.1
-    @cart_items = CartItem.where(customer_id: current_customer)
+    @cart_items = current_customer.cart_items
     @item_total = 0
     @cart_items.each do |cart_item|
       @item_total += cart_item.item.price * cart_item.count
