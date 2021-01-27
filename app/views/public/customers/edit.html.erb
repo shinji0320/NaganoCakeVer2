@@ -10,7 +10,7 @@
       <% end %>
       <%= form_for @customer, url: public_customer_path, local:true do |f|%>
       <div class="form-group">
-        <label>名前</label></br>
+        <label>名前</label><br />
         <%= f.label :first_name, "(姓)" %>
         <%= f.text_field :first_name, autofocus: true, class:"form-control" %>
         <%= f.label :last_name, "(名)" %>
@@ -18,7 +18,7 @@
       </div>
 
       <div class="form-group">
-        <label>フリガナ</label></br>
+        <label>フリガナ</label><br />
         <%= f.label :kana_first_name, "(セイ)" %>
         <%= f.text_field :kana_first_name, class:"form-control" %>
         <%= f.label :kana_last_name, "(メイ)" %>
